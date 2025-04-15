@@ -134,10 +134,10 @@ const ProductPricing = () => {
                 <div className="p-6">
                   <h4 className="text-xl font-semibold mb-3 flex items-center">
                     <Users className="h-6 w-6 text-[#ff770f] mr-2" />
-                    Aplicación para Clientes
+                    {t('product.client_app.title')}
                   </h4>
                   <p className="text-gray-600 mb-4">
-                    Permite a tus clientes agendar citas, realizar pagos y acceder a su historial de servicios.
+                    {t('product.client_app.description')}
                   </p>
                   <div className="aspect-w-16 aspect-h-9 bg-gray-100 rounded-lg overflow-hidden mb-4">
                     <img 
@@ -149,15 +149,15 @@ const ProductPricing = () => {
                   <ul className="space-y-2">
                     <li className="flex items-start">
                       <CheckCircle2 className="h-5 w-5 text-[#ff770f] mr-2 flex-shrink-0 mt-0.5" />
-                      <span>Reserva de citas en tiempo real</span>
+                      <span>{t('product.client_app.feature1')}</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle2 className="h-5 w-5 text-[#ff770f] mr-2 flex-shrink-0 mt-0.5" />
-                      <span>Pagos integrados y seguros</span>
+                      <span>{t('product.client_app.feature2')}</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle2 className="h-5 w-5 text-[#ff770f] mr-2 flex-shrink-0 mt-0.5" />
-                      <span>Notificaciones y recordatorios</span>
+                      <span>{t('product.client_app.feature3')}</span>
                     </li>
                   </ul>
                 </div>
@@ -167,10 +167,10 @@ const ProductPricing = () => {
                 <div className="p-6">
                   <h4 className="text-xl font-semibold mb-3 flex items-center">
                     <Users className="h-6 w-6 text-[#5ccdcc] mr-2" />
-                    Aplicación para Empleados
+                    {t('product.employee_app.title')}
                   </h4>
                   <p className="text-gray-600 mb-4">
-                    Ayuda a tus empleados a gestionar sus horarios, clientes y servicios desde cualquier lugar.
+                    {t('product.employee_app.description')}
                   </p>
                   <div className="aspect-w-16 aspect-h-9 bg-gray-100 rounded-lg overflow-hidden mb-4">
                     <img 
@@ -182,15 +182,15 @@ const ProductPricing = () => {
                   <ul className="space-y-2">
                     <li className="flex items-start">
                       <CheckCircle2 className="h-5 w-5 text-[#5ccdcc] mr-2 flex-shrink-0 mt-0.5" />
-                      <span>Gestión de horarios y disponibilidad</span>
+                      <span>{t('product.employee_app.feature1')}</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle2 className="h-5 w-5 text-[#5ccdcc] mr-2 flex-shrink-0 mt-0.5" />
-                      <span>Seguimiento de clientes y servicios</span>
+                      <span>{t('product.employee_app.feature2')}</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle2 className="h-5 w-5 text-[#5ccdcc] mr-2 flex-shrink-0 mt-0.5" />
-                      <span>Comunicación con el equipo</span>
+                      <span>{t('product.employee_app.feature3')}</span>
                     </li>
                   </ul>
                 </div>
@@ -204,10 +204,10 @@ const ProductPricing = () => {
                 <div className="p-6">
                   <h4 className="text-xl font-semibold mb-3 flex items-center">
                     <Monitor className="h-6 w-6 text-[#ff770f] mr-2" />
-                    Plataforma SaaS
+                    {t('product.saas.title')}
                   </h4>
                   <p className="text-gray-600 mb-4">
-                    Centro de control completo para administrar todos los aspectos de tu negocio.
+                    {t('product.saas.description')}
                   </p>
                   <div className="aspect-w-16 aspect-h-9 bg-gray-100 rounded-lg overflow-hidden mb-4">
                     <img 
@@ -219,15 +219,15 @@ const ProductPricing = () => {
                   <ul className="space-y-2">
                     <li className="flex items-start">
                       <CheckCircle2 className="h-5 w-5 text-[#ff770f] mr-2 flex-shrink-0 mt-0.5" />
-                      <span>Panel de control centralizado</span>
+                      <span>{t('product.saas.feature1')}</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle2 className="h-5 w-5 text-[#ff770f] mr-2 flex-shrink-0 mt-0.5" />
-                      <span>Análisis de datos y reportes</span>
+                      <span>{t('product.saas.feature2')}</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle2 className="h-5 w-5 text-[#ff770f] mr-2 flex-shrink-0 mt-0.5" />
-                      <span>Gestión completa de personal y clientes</span>
+                      <span>{t('product.saas.feature3')}</span>
                     </li>
                   </ul>
                 </div>
@@ -237,10 +237,10 @@ const ProductPricing = () => {
                 <div className="p-6">
                   <h4 className="text-xl font-semibold mb-3 flex items-center">
                     <Globe className="h-6 w-6 text-[#5ccdcc] mr-2" />
-                    Landing Privado
+                    {t('product.landing.title')}
                   </h4>
                   <p className="text-gray-600 mb-4">
-                    Página web personalizada para tu negocio que permite a tus clientes conocer tus servicios y reservar.
+                    {t('product.landing.description')}
                   </p>
                   <div className="aspect-w-16 aspect-h-9 bg-gray-100 rounded-lg overflow-hidden mb-4">
                     <img 
@@ -252,15 +252,15 @@ const ProductPricing = () => {
                   <ul className="space-y-2">
                     <li className="flex items-start">
                       <CheckCircle2 className="h-5 w-5 text-[#5ccdcc] mr-2 flex-shrink-0 mt-0.5" />
-                      <span>Diseño personalizado con tu marca</span>
+                      <span>{t('product.landing.feature1')}</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle2 className="h-5 w-5 text-[#5ccdcc] mr-2 flex-shrink-0 mt-0.5" />
-                      <span>Catálogo de servicios con reservas online</span>
+                      <span>{t('product.landing.feature2')}</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle2 className="h-5 w-5 text-[#5ccdcc] mr-2 flex-shrink-0 mt-0.5" />
-                      <span>Formularios de contacto y testimonios</span>
+                      <span>{t('product.landing.feature3')}</span>
                     </li>
                   </ul>
                 </div>
@@ -271,7 +271,7 @@ const ProductPricing = () => {
         
         {/* Video Demo Section */}
         <div className="mb-16">
-          <h3 className="text-2xl font-semibold mb-6 text-center">Mira cómo funciona</h3>
+          <h3 className="text-2xl font-semibold mb-6 text-center">{t('product.video.title')}</h3>
           <div className="bg-gradient-to-r from-[#ff770f]/10 to-[#5ccdcc]/10 p-6 rounded-xl">
             <div className="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-xl mx-auto">
               <iframe 
@@ -285,8 +285,7 @@ const ProductPricing = () => {
             </div>
             <div className="mt-4 text-center">
               <p className="text-gray-600 max-w-3xl mx-auto">
-                Nuestro sistema integrado permite administrar todos los aspectos de tu negocio
-                desde la misma plataforma - reservaciones, pagos, inventario y más.
+                {t('product.video.description')}
               </p>
             </div>
           </div>
@@ -294,7 +293,7 @@ const ProductPricing = () => {
         
         {/* Pricing Table Section */}
         <div>
-          <h3 className="text-2xl font-semibold mb-6 text-center">Planes y Precios</h3>
+          <h3 className="text-2xl font-semibold mb-6 text-center">{t('product.pricing.title')}</h3>
           
           {/* Desktop Pricing Table */}
           <div className="hidden md:block overflow-x-auto">
@@ -314,7 +313,7 @@ const ProductPricing = () => {
                 <tbody>
                   {/* Calendar & Config */}
                   <tr>
-                    <td className="py-3 px-6 border-b">Calendario & Configuraciones</td>
+                    <td className="py-3 px-6 border-b">{t('product.pricing.feature.calendar')}</td>
                     {pricingPlans.map((plan) => (
                       <td key={`${plan.name}-calendar`} className="py-3 px-6 text-center border-b">
                         {plan.features.calendar ? (
@@ -328,7 +327,7 @@ const ProductPricing = () => {
                   
                   {/* CRM */}
                   <tr className="bg-gray-50">
-                    <td className="py-3 px-6 border-b">CRM</td>
+                    <td className="py-3 px-6 border-b">{t('product.pricing.feature.crm')}</td>
                     {pricingPlans.map((plan) => (
                       <td key={`${plan.name}-crm`} className="py-3 px-6 text-center border-b">
                         {plan.features.crm ? (
@@ -342,7 +341,7 @@ const ProductPricing = () => {
                   
                   {/* Landing Privado */}
                   <tr>
-                    <td className="py-3 px-6 border-b">Landing Privado</td>
+                    <td className="py-3 px-6 border-b">{t('product.pricing.feature.landing')}</td>
                     {pricingPlans.map((plan) => (
                       <td key={`${plan.name}-landing`} className="py-3 px-6 text-center border-b">
                         {plan.features.landing ? (
@@ -356,7 +355,7 @@ const ProductPricing = () => {
                   
                   {/* Branches */}
                   <tr className="bg-gray-50">
-                    <td className="py-3 px-6 border-b">Sucursales</td>
+                    <td className="py-3 px-6 border-b">{t('product.pricing.feature.branches')}</td>
                     {pricingPlans.map((plan) => (
                       <td key={`${plan.name}-branches`} className="py-3 px-6 text-center border-b">
                         {plan.features.branches ? (
@@ -370,7 +369,7 @@ const ProductPricing = () => {
                   
                   {/* Inventory */}
                   <tr>
-                    <td className="py-3 px-6 border-b">Inventario</td>
+                    <td className="py-3 px-6 border-b">{t('product.pricing.feature.inventory')}</td>
                     {pricingPlans.map((plan) => (
                       <td key={`${plan.name}-inventory`} className="py-3 px-6 text-center border-b">
                         {plan.features.inventory ? (
@@ -384,7 +383,7 @@ const ProductPricing = () => {
                   
                   {/* Promotions */}
                   <tr className="bg-gray-50">
-                    <td className="py-3 px-6 border-b">Promociones</td>
+                    <td className="py-3 px-6 border-b">{t('product.pricing.feature.promotions')}</td>
                     {pricingPlans.map((plan) => (
                       <td key={`${plan.name}-promotions`} className="py-3 px-6 text-center border-b">
                         {plan.features.promotions ? (
@@ -409,7 +408,7 @@ const ProductPricing = () => {
                               : "bg-[#ff770f] text-white"
                           } px-4 py-2 rounded-md font-medium hover:opacity-90 transition-colors text-sm`}
                         >
-                          Solicitar Demo
+                          {t('product.pricing.contact')}
                         </button>
                       </td>
                     ))}
@@ -436,7 +435,7 @@ const ProductPricing = () => {
                         <X className="h-5 w-5 text-gray-300 mr-2" />
                       )}
                       <span className={!plan.features.calendar ? "text-gray-400" : ""}>
-                        Calendario & Configuraciones
+                        {t('product.pricing.feature.calendar')}
                       </span>
                     </li>
                     <li className="flex items-center">
@@ -446,7 +445,7 @@ const ProductPricing = () => {
                         <X className="h-5 w-5 text-gray-300 mr-2" />
                       )}
                       <span className={!plan.features.crm ? "text-gray-400" : ""}>
-                        CRM
+                        {t('product.pricing.feature.crm')}
                       </span>
                     </li>
                     <li className="flex items-center">
@@ -456,7 +455,7 @@ const ProductPricing = () => {
                         <X className="h-5 w-5 text-gray-300 mr-2" />
                       )}
                       <span className={!plan.features.landing ? "text-gray-400" : ""}>
-                        Landing Privado
+                        {t('product.pricing.feature.landing')}
                       </span>
                     </li>
                     <li className="flex items-center">
@@ -466,7 +465,7 @@ const ProductPricing = () => {
                         <X className="h-5 w-5 text-gray-300 mr-2" />
                       )}
                       <span className={!plan.features.branches ? "text-gray-400" : ""}>
-                        Sucursales
+                        {t('product.pricing.feature.branches')}
                       </span>
                     </li>
                   </ul>
@@ -479,7 +478,7 @@ const ProductPricing = () => {
                           : "bg-[#ff770f] text-white hover:bg-[#ff770f]/90"
                       } px-4 py-2 rounded-md font-medium transition-colors text-center`}
                     >
-                      Solicitar Demo
+                      {t('product.pricing.contact')}
                     </button>
                   </div>
                 </div>
@@ -489,35 +488,35 @@ const ProductPricing = () => {
           
           {/* Add-ons Section */}
           <div className="mt-12">
-            <h4 className="text-xl font-semibold mb-4 text-center">Extras</h4>
+            <h4 className="text-xl font-semibold mb-4 text-center">{t('product.addons.title') || 'Extras'}</h4>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
                 <div className="flex items-center mb-3">
                   <MessageSquare className="h-6 w-6 text-green-500 mr-2" />
-                  <h5 className="font-medium">WhatsApp Ilimitado</h5>
+                  <h5 className="font-medium">{t('product.addons.whatsapp.title') || 'WhatsApp Ilimitado'}</h5>
                 </div>
                 <p className="text-sm text-gray-600">
-                  Envía mensajes ilimitados a tus clientes desde la plataforma.
+                  {t('product.addons.whatsapp.description') || 'Envía mensajes ilimitados a tus clientes desde la plataforma.'}
                 </p>
               </div>
               
               <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
                 <div className="flex items-center mb-3">
                   <Lightbulb className="h-6 w-6 text-blue-500 mr-2" />
-                  <h5 className="font-medium">IA en WhatsApp</h5>
+                  <h5 className="font-medium">{t('product.addons.ai.title') || 'IA en WhatsApp'}</h5>
                 </div>
                 <p className="text-sm text-gray-600">
-                  Asistente virtual con IA para responder consultas de tus clientes.
+                  {t('product.addons.ai.description') || 'Asistente virtual con IA para responder consultas de tus clientes.'}
                 </p>
               </div>
               
               <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
                 <div className="flex items-center mb-3">
                   <ClipboardList className="h-6 w-6 text-purple-500 mr-2" />
-                  <h5 className="font-medium">Sistema de Facturación</h5>
+                  <h5 className="font-medium">{t('product.addons.billing.title') || 'Sistema de Facturación'}</h5>
                 </div>
                 <p className="text-sm text-gray-600">
-                  Genera facturas electrónicas y gestiona impuestos automáticamente.
+                  {t('product.addons.billing.description') || 'Genera facturas electrónicas y gestiona impuestos automáticamente.'}
                 </p>
               </div>
             </div>

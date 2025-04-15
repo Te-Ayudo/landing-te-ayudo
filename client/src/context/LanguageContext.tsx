@@ -75,6 +75,15 @@ export const translations = {
     'product.pricing.feature.promotions': 'Módulo de Promociones',
     'product.pricing.action': 'Comenzar',
     'product.pricing.contact': 'Contáctanos',
+    
+    // Add-ons Section
+    'product.addons.title': 'Extras',
+    'product.addons.whatsapp.title': 'WhatsApp Ilimitado',
+    'product.addons.whatsapp.description': 'Envía mensajes ilimitados a tus clientes desde la plataforma.',
+    'product.addons.ai.title': 'IA en WhatsApp',
+    'product.addons.ai.description': 'Asistente virtual con IA para responder consultas de tus clientes.',
+    'product.addons.billing.title': 'Sistema de Facturación',
+    'product.addons.billing.description': 'Genera facturas electrónicas y gestiona impuestos automáticamente.',
     // Navbar
     'nav.mission': 'Misión y Visión',
     'nav.roadmap': 'Nuestra Ruta',
@@ -196,6 +205,15 @@ export const translations = {
     'product.pricing.feature.promotions': 'Promotions Module',
     'product.pricing.action': 'Get Started',
     'product.pricing.contact': 'Contact Us',
+    
+    // Add-ons Section
+    'product.addons.title': 'Add-ons',
+    'product.addons.whatsapp.title': 'Unlimited WhatsApp',
+    'product.addons.whatsapp.description': 'Send unlimited messages to your customers from the platform.',
+    'product.addons.ai.title': 'AI on WhatsApp',
+    'product.addons.ai.description': 'Virtual assistant with AI to answer your customers\' queries.',
+    'product.addons.billing.title': 'Billing System',
+    'product.addons.billing.description': 'Generate electronic invoices and manage taxes automatically.',
     
     // Navbar
     'nav.mission': 'Mission & Vision',
