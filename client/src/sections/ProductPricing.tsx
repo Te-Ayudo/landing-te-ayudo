@@ -253,15 +253,23 @@ const ProductPricing = () => {
         {/* Video Demo Section */}
         <div className="mb-16">
           <h3 className="text-2xl font-semibold mb-6 text-center">Mira cómo funciona</h3>
-          <div className="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-lg max-w-4xl mx-auto">
-            <iframe 
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-              title="Te Ayudo - Cómo funciona" 
-              frameBorder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+          <div className="bg-gradient-to-r from-[#ff770f]/10 to-[#5ccdcc]/10 p-6 rounded-xl">
+            <div className="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-xl mx-auto">
+              <iframe 
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                title="Te Ayudo - Cómo funciona" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+            <div className="mt-4 text-center">
+              <p className="text-gray-600 max-w-3xl mx-auto">
+                Nuestro sistema integrado permite administrar todos los aspectos de tu negocio
+                desde la misma plataforma - reservaciones, pagos, inventario y más.
+              </p>
+            </div>
           </div>
         </div>
         

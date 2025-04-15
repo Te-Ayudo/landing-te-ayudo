@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { ChevronLeft, ChevronRight, Filter } from "lucide-react";
 
 // Company logos data
 const partnerLogos = [
@@ -175,70 +175,6 @@ const partnerLogos = [
     name: "Digital Growth",
     logo: "https://img.icons8.com/fluency/96/000000/line-chart.png",
     industry: "Marketing"
-  },
-  {
-    name: "Social Impact",
-    logo: "https://img.icons8.com/fluency/96/000000/like.png",
-    industry: "Marketing"
-  },
-  {
-    name: "BrandBuilders",
-    logo: "https://img.icons8.com/fluency/96/000000/diversity.png",
-    industry: "Marketing"
-  },
-  {
-    name: "ContentCreators",
-    logo: "https://img.icons8.com/fluency/96/000000/video.png",
-    industry: "Marketing"
-  },
-  
-  // Consultoría
-  {
-    name: "Asesores Inc",
-    logo: "https://img.icons8.com/fluency/96/000000/businessman.png",
-    industry: "Consultoría"
-  },
-  {
-    name: "Business Pro",
-    logo: "https://img.icons8.com/fluency/96/000000/briefcase.png",
-    industry: "Consultoría"
-  },
-  {
-    name: "Legal Solutions",
-    logo: "https://img.icons8.com/fluency/96/000000/scales.png",
-    industry: "Consultoría"
-  },
-  {
-    name: "Tax Advisors",
-    logo: "https://img.icons8.com/fluency/96/000000/tax.png",
-    industry: "Consultoría"
-  },
-  {
-    name: "Coaching Executive",
-    logo: "https://img.icons8.com/fluency/96/000000/conference-call.png",
-    industry: "Consultoría"
-  },
-  
-  // Inmobiliaria
-  {
-    name: "Propiedades Top",
-    logo: "https://img.icons8.com/fluency/96/000000/cottage.png",
-    industry: "Inmobiliaria"
-  },
-  {
-    name: "Urban Homes",
-    logo: "https://img.icons8.com/fluency/96/000000/city.png",
-    industry: "Inmobiliaria"
-  },
-  {
-    name: "Construye Futuro",
-    logo: "https://img.icons8.com/fluency/96/000000/crane.png",
-    industry: "Inmobiliaria"
-  },
-  {
-    name: "Bienes Raíces Plus",
-    logo: "https://img.icons8.com/fluency/96/000000/building.png",
-    industry: "Inmobiliaria"
   }
 ];
 
@@ -251,16 +187,16 @@ const industries = [
   { name: "Retail", color: "#ff770f" },
   { name: "Educación", color: "#5ccdcc" },
   { name: "Hospitalidad", color: "#ff770f" },
-  { name: "Marketing", color: "#5ccdcc" },
-  { name: "Consultoría", color: "#ff770f" },
-  { name: "Inmobiliaria", color: "#5ccdcc" }
+  { name: "Marketing", color: "#5ccdcc" }
 ];
 
 const Partners = () => {
   const [activeIndustry, setActiveIndustry] = useState("Todos");
-  const [scrollPosition, setScrollPosition] = useState(0);
   const [companyCount, setCompanyCount] = useState(0);
-  const sliderRef = useRef<HTMLDivElement>(null);
+  const [showAllLogos, setShowAllLogos] = useState(false);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const filtersRef = useRef<HTMLDivElement>(null);
   
   // Animate the company count
   useEffect(() => {
@@ -276,45 +212,45 @@ const Partners = () => {
       return () => clearTimeout(timer);
     }
   }, [companyCount]);
-
+  
   // Filter logos based on selected industry
   const filteredLogos = activeIndustry === "Todos"
     ? partnerLogos
     : partnerLogos.filter(logo => logo.industry === activeIndustry);
-
-  // Scroll slider left
-  const scrollLeft = () => {
-    if (sliderRef.current) {
-      const newPosition = Math.max(0, scrollPosition - 300);
-      sliderRef.current.scrollTo({ left: newPosition, behavior: "smooth" });
-      setScrollPosition(newPosition);
-    }
-  };
-
-  // Scroll slider right
-  const scrollRight = () => {
-    if (sliderRef.current) {
-      const maxScrollLeft = sliderRef.current.scrollWidth - sliderRef.current.clientWidth;
-      const newPosition = Math.min(maxScrollLeft, scrollPosition + 300);
-      sliderRef.current.scrollTo({ left: newPosition, behavior: "smooth" });
-      setScrollPosition(newPosition);
-    }
-  };
-
-  // Update scroll position when scrolling
+  
+  const totalSlides = Math.ceil(filteredLogos.length / 6);
+  
+  // Auto-scroll carousel
   useEffect(() => {
-    const handleScroll = () => {
-      if (sliderRef.current) {
-        setScrollPosition(sliderRef.current.scrollLeft);
-      }
-    };
-
-    const sliderElement = sliderRef.current;
-    if (sliderElement) {
-      sliderElement.addEventListener("scroll", handleScroll);
-      return () => sliderElement.removeEventListener("scroll", handleScroll);
+    if (!showAllLogos) {
+      const interval = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % totalSlides);
+      }, 5000);
+      
+      return () => clearInterval(interval);
     }
-  }, []);
+  }, [currentSlide, totalSlides, showAllLogos]);
+  
+  // Handle next/prev slide
+  const goToNextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % totalSlides);
+  };
+  
+  const goToPrevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+  };
+  
+  // Scroll the filters into view if needed
+  const scrollFilters = (direction: 'left' | 'right') => {
+    if (filtersRef.current) {
+      const scrollAmount = 150;
+      const currentScroll = filtersRef.current.scrollLeft;
+      filtersRef.current.scrollTo({
+        left: direction === 'left' ? currentScroll - scrollAmount : currentScroll + scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
     <section id="partners" className="py-16 bg-[#ffffff]">
@@ -334,19 +270,23 @@ const Partners = () => {
         </div>
 
         {/* Industry filters */}
-        <div className="mb-10 relative">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-semibold">Filtrar por Industria</h3>
-            <div className="flex space-x-2">
+        <div className="mb-6 relative">
+          <div className="flex justify-between items-center mb-2">
+            <h3 className="text-lg font-semibold flex items-center">
+              <Filter className="h-5 w-5 mr-2 text-[#ff770f]" />
+              Filtrar por Industria
+            </h3>
+            
+            <div className="flex space-x-2 md:hidden">
               <button 
-                onClick={scrollLeft}
+                onClick={() => scrollFilters('left')}
                 className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
                 aria-label="Desplazar a la izquierda"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
               <button 
-                onClick={scrollRight}
+                onClick={() => scrollFilters('right')}
                 className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
                 aria-label="Desplazar a la derecha"
               >
@@ -356,22 +296,21 @@ const Partners = () => {
           </div>
           
           <div 
-            ref={sliderRef}
-            className="flex overflow-x-auto scrollbar-hide pb-2 snap-x"
+            ref={filtersRef}
+            className="flex overflow-x-auto md:flex-wrap scrollbar-hide pb-2 gap-2"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {industries.map(industry => (
               <button
                 key={industry.name}
                 onClick={() => setActiveIndustry(industry.name)}
-                className={`px-4 py-2 rounded-full mr-2 text-sm font-medium whitespace-nowrap snap-start ${
+                className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap flex-shrink-0 transition-colors ${
                   activeIndustry === industry.name
-                    ? `bg-[${industry.color}] text-white`
+                    ? "text-white"
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
                 style={{ 
-                  backgroundColor: activeIndustry === industry.name ? industry.color : undefined,
-                  minWidth: 'fit-content'
+                  backgroundColor: activeIndustry === industry.name ? industry.color : undefined
                 }}
               >
                 {industry.name}
@@ -379,26 +318,106 @@ const Partners = () => {
             ))}
           </div>
         </div>
-
-        {/* Partner logos grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
-          {filteredLogos.map((partner, index) => (
-            <div
-              key={`${partner.name}-${index}`}
-              className="flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-all hover:border-[#ff770f]/30 hover:scale-105 group cursor-pointer"
-            >
-              <div className="bg-gray-50 p-3 rounded-full mb-3 group-hover:bg-[#fff8f0] transition-colors">
-                <img
-                  src={partner.logo}
-                  alt={`Logo de ${partner.name}`}
-                  className="h-14 w-14 object-contain"
-                />
-              </div>
-              <span className="text-sm font-medium text-center group-hover:text-[#ff770f] transition-colors">{partner.name}</span>
-              <span className="text-xs text-gray-500 mt-1">{partner.industry}</span>
-            </div>
-          ))}
+        
+        {/* Partners display toggle */}
+        <div className="flex justify-end mb-6">
+          <button
+            onClick={() => setShowAllLogos(!showAllLogos)}
+            className="text-sm font-medium text-[#ff770f] bg-[#ff770f]/10 px-4 py-2 rounded-md hover:bg-[#ff770f]/20 transition-colors"
+          >
+            {showAllLogos ? "Ver Carrusel" : "Ver Todos"}
+          </button>
         </div>
+
+        {/* Partners carousel view */}
+        {!showAllLogos && (
+          <div className="relative">
+            <div 
+              ref={carouselRef}
+              className="overflow-hidden rounded-xl border border-gray-100 shadow-sm bg-white p-6"
+            >
+              <div 
+                className="transition-transform duration-500 ease-in-out grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4"
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {filteredLogos.map((partner, index) => (
+                  <div
+                    key={partner.name + index}
+                    className="flex flex-col items-center justify-center p-3 hover:scale-110 transition-transform duration-300 cursor-pointer"
+                  >
+                    <div className="bg-gray-50 p-3 rounded-full mb-2 hover:bg-[#fff8f0] transition-colors">
+                      <img
+                        src={partner.logo}
+                        alt={`Logo de ${partner.name}`}
+                        className="h-14 w-14 object-contain"
+                      />
+                    </div>
+                    <span className="text-sm font-medium text-center hover:text-[#ff770f] transition-colors">{partner.name}</span>
+                    <span className="text-xs text-gray-500">{partner.industry}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Carousel controls */}
+            {totalSlides > 1 && (
+              <>
+                <div className="absolute inset-y-0 left-0 flex items-center">
+                  <button 
+                    onClick={goToPrevSlide}
+                    className="p-2 rounded-full bg-white shadow-md text-gray-700 hover:text-[#ff770f] transition-colors -ml-3"
+                  >
+                    <ChevronLeft className="h-5 w-5" />
+                  </button>
+                </div>
+                <div className="absolute inset-y-0 right-0 flex items-center">
+                  <button 
+                    onClick={goToNextSlide}
+                    className="p-2 rounded-full bg-white shadow-md text-gray-700 hover:text-[#ff770f] transition-colors -mr-3"
+                  >
+                    <ChevronRight className="h-5 w-5" />
+                  </button>
+                </div>
+                
+                {/* Carousel indicators */}
+                <div className="flex justify-center mt-4 space-x-2">
+                  {Array.from({ length: totalSlides }).map((_, index) => (
+                    <button
+                      key={`indicator-${index}`}
+                      onClick={() => setCurrentSlide(index)}
+                      className={`w-2.5 h-2.5 rounded-full transition-colors ${
+                        currentSlide === index ? "bg-[#ff770f]" : "bg-gray-300 hover:bg-gray-400"
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        )}
+        
+        {/* Partners grid view */}
+        {showAllLogos && (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
+            {filteredLogos.map((partner, index) => (
+              <div
+                key={`grid-${partner.name}-${index}`}
+                className="flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-all hover:border-[#ff770f]/30 hover:scale-105 group cursor-pointer"
+              >
+                <div className="bg-gray-50 p-3 rounded-full mb-3 group-hover:bg-[#fff8f0] transition-colors">
+                  <img
+                    src={partner.logo}
+                    alt={`Logo de ${partner.name}`}
+                    className="h-14 w-14 object-contain"
+                  />
+                </div>
+                <span className="text-sm font-medium text-center group-hover:text-[#ff770f] transition-colors">{partner.name}</span>
+                <span className="text-xs text-gray-500 mt-1">{partner.industry}</span>
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Call to action */}
         <div className="text-center mt-12">
