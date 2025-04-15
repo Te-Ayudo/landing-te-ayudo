@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, Globe } from "lucide-react";
 import { scrollToSection } from "@/lib/utils";
-import teAyudoLogo from "@assets/TE AYUDO Logo-03 (1).png";
+import teAyudoLogo from "@assets/Post & Imagenes.png";
 import { useLanguage } from "@/context/NewLanguageContext";
 
 const Navbar = () => {
@@ -75,7 +75,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src={teAyudoLogo} alt="Te Ayudo Logo" className="h-10" />
+            <img src={teAyudoLogo} alt="Te Ayudo Logo" className="h-8" />
           </Link>
           
           {/* Desktop Navigation */}
