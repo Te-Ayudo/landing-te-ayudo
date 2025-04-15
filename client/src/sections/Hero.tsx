@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/animated-section";
 import { GlassCard, TechGridBackground, GlowingCircle } from "@/components/ui/glass-card";
 import { FuturisticButton } from "@/components/ui/futuristic-button";
-import clientAppImage from "@assets/Post & Imagenes_20250415_134221_0001.png";
+import clientAppImage from "@assets/happy-client.png";
 import { useLanguage } from "@/context/LanguageContext";
 
 const Hero = () => {
@@ -144,7 +144,7 @@ const Hero = () => {
                 <img 
                   src={clientAppImage} 
                   alt={t('hero.title') + " " + t('hero.subtitle')} 
-                  className="rounded-lg w-full h-auto object-contain"
+                  className="rounded-lg w-full h-auto object-cover"
                 />
                 
                 {/* Floating accent elements */}
