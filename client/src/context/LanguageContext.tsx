@@ -129,6 +129,26 @@ export const translations = {
     'footer.legal.terms': 'Términos y Condiciones',
     'footer.legal.privacy': 'Política de Privacidad',
     
+    // Contact Section
+    'contact.title': 'Contáctanos',
+    'contact.subtitle': '¿Tienes preguntas sobre nuestros servicios? Estamos aquí para ayudarte.',
+    'contact.info.title': 'Información de Contacto',
+    'contact.info.phone': 'Teléfono',
+    'contact.info.email': 'Email',
+    'contact.info.address': 'Dirección',
+    'contact.whatsapp': 'Contáctanos por WhatsApp',
+    'contact.form.title': 'Envíanos un Mensaje',
+    'contact.form.name': 'Nombre',
+    'contact.form.name.placeholder': 'Tu nombre',
+    'contact.form.email': 'Email',
+    'contact.form.email.placeholder': 'tu@email.com',
+    'contact.form.company': 'Empresa',
+    'contact.form.company.placeholder': 'Nombre de tu empresa',
+    'contact.form.message': 'Mensaje',
+    'contact.form.message.placeholder': '¿Cómo podemos ayudarte?',
+    'contact.form.submit': 'Enviar Mensaje',
+    'contact.form.success': 'Mensaje enviado con éxito. ¡Gracias por contactarnos!',
+
     // Common
     'common.loading': 'Cargando...',
     'common.error': 'Ha ocurrido un error',
@@ -259,6 +279,26 @@ export const translations = {
     'footer.copyright': 'All rights reserved.',
     'footer.legal.terms': 'Terms & Conditions',
     'footer.legal.privacy': 'Privacy Policy',
+    
+    // Contact Section
+    'contact.title': 'Contact Us',
+    'contact.subtitle': 'Have questions about our services? We are here to help you.',
+    'contact.info.title': 'Contact Information',
+    'contact.info.phone': 'Phone',
+    'contact.info.email': 'Email',
+    'contact.info.address': 'Address',
+    'contact.whatsapp': 'Contact us via WhatsApp',
+    'contact.form.title': 'Send us a Message',
+    'contact.form.name': 'Name',
+    'contact.form.name.placeholder': 'Your name',
+    'contact.form.email': 'Email',
+    'contact.form.email.placeholder': 'your@email.com',
+    'contact.form.company': 'Company',
+    'contact.form.company.placeholder': 'Your company name',
+    'contact.form.message': 'Message',
+    'contact.form.message.placeholder': 'How can we help you?',
+    'contact.form.submit': 'Send Message',
+    'contact.form.success': 'Message sent successfully. Thank you for contacting us!',
     
     // Common
     'common.loading': 'Loading...',
