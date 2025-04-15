@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { ChevronLeft, ChevronRight, Filter } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
-// Textos fijos para el componente en ambos idiomas
-const translations = {
+// Estas traducciones serán eliminadas luego ya que ahora usamos el contexto global
+const translationsBackup = {
   es: {
     title: 'Empresas que Confían en Nosotros',
     subtitle: 'Más de 40 empresas líderes en sus industrias ya utilizan Te Ayudo para optimizar sus operaciones y mejorar la experiencia de sus clientes.',
@@ -222,32 +223,8 @@ const industriesEn = [
 ];
 
 const Partners = () => {
-  // Por defecto se usa español, pero intentamos leer del localStorage
-  const [language, setLanguage] = useState<'es' | 'en'>(() => {
-    try {
-      const savedLanguage = localStorage.getItem('language') as 'es' | 'en';
-      return (savedLanguage === 'es' || savedLanguage === 'en') ? savedLanguage : 'es';
-    } catch (e) {
-      return 'es';
-    }
-  });
-  
-  // Función de traducción simplificada
-  const t = (key: string): string => {
-    try {
-      const parts = key.split('.');
-      if (parts.length === 2 && parts[0] === 'partners') {
-        const currentTranslations = language === 'es' ? translations.es : translations.en;
-        // Convertir el formato "partners.title" a "title" para nuestro objeto de traducciones local
-        const simpleKey = parts[1] as keyof typeof translations.es;
-        return currentTranslations[simpleKey] || key;
-      }
-      return key;
-    } catch (error) {
-      console.error('Translation error', error);
-      return key;
-    }
-  };
+  // Usar el contexto global de idioma
+  const { language, t } = useLanguage();
 
   const defaultIndustry = language === 'es' ? "Todos" : "All";
   const [activeIndustry, setActiveIndustry] = useState(defaultIndustry);

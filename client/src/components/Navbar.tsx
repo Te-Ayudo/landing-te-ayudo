@@ -10,50 +10,8 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
   
-  // Estado para el idioma con inicialización desde localStorage
-  const [language, setLanguageState] = useState<'es' | 'en'>(() => {
-    try {
-      const savedLanguage = localStorage.getItem('language') as 'es' | 'en';
-      return (savedLanguage === 'es' || savedLanguage === 'en') ? savedLanguage : 'es';
-    } catch (e) {
-      return 'es';
-    }
-  });
-
-  // Función de traducción simplificada
-  const t = (key: string): string => {
-    try {
-      const parts = key.split('.');
-      if (parts.length === 2 && parts[0] === 'nav') {
-        const currentTranslations = language === 'es' ? translations.es : translations.en;
-        // Para manejar casos especiales como 'nav.language.es'
-        if (parts[1] === 'language.es') {
-          return currentTranslations.language.es;
-        } else if (parts[1] === 'language.en') {
-          return currentTranslations.language.en;
-        }
-        // Convertir el formato "nav.mission" a "mission" para nuestro objeto de traducciones local
-        const simpleKey = parts[1] as keyof typeof translations.es;
-        if (typeof currentTranslations[simpleKey] === 'string') {
-          return currentTranslations[simpleKey] as string;
-        }
-      }
-      return key;
-    } catch (error) {
-      console.error('Translation error', error);
-      return key;
-    }
-  };
-
-  // Función para cambiar el idioma y guardarlo en localStorage
-  const setLanguage = (lang: 'es' | 'en') => {
-    setLanguageState(lang);
-    try {
-      localStorage.setItem('language', lang);
-    } catch (e) {
-      console.error('Error saving language preference', e);
-    }
-  };
+  // Usar el contexto global de idioma
+  const { language, setLanguage, t } = useLanguage();
 
   // Add scroll event listener to add shadow when scrolled
   useEffect(() => {
@@ -174,7 +132,7 @@ const Navbar = () => {
             </div>
             
             <a href="https://app.teayudo.com.bo/#/login" target="_blank" rel="noopener noreferrer" className="bg-[#ff770f] text-white px-4 py-2 rounded-md font-medium hover:bg-[#ff770f]/90 transition-colors">
-              Afiliados
+              {t('common.affiliate')}
             </a>
           </nav>
           
@@ -253,7 +211,7 @@ const Navbar = () => {
             rel="noopener noreferrer"
             className="bg-[#ff770f] text-white px-4 py-2 rounded-md font-medium hover:bg-[#ff770f]/90 transition-colors text-center"
           >
-            Afiliados
+            {t('common.affiliate')}
           </a>
         </div>
       </div>
