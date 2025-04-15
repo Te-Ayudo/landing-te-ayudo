@@ -142,11 +142,21 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
   // Función para cambiar el idioma
   const setLanguage = (lang: Language) => {
+    console.log(`Cambiando idioma a: ${lang}`);
     setLanguageState(lang);
     try {
       localStorage.setItem('language', lang);
       // Evento para sincronizar el idioma entre diferentes componentes
       window.dispatchEvent(new CustomEvent('language-change', { detail: { language: lang } }));
+      
+      // Forzar una actualización inmediata en la interfaz
+      document.documentElement.setAttribute('lang', lang);
+      
+      // Esto ayuda a actualizar más componentes
+      setTimeout(() => {
+        window.dispatchEvent(new Event('resize'));
+      }, 50);
+      
     } catch (e) {
       console.error('Error saving language preference', e);
     }
@@ -194,10 +204,19 @@ export const useLanguage = (): LanguageContextType => {
     const [language, setLanguageState] = useState<Language>(getSavedLanguage);
     
     const setLanguage = (lang: Language) => {
+      console.log(`Cambiando idioma a: ${lang} (fallback)`);
       setLanguageState(lang);
       try {
         localStorage.setItem('language', lang);
         window.dispatchEvent(new CustomEvent('language-change', { detail: { language: lang } }));
+        
+        // Forzar una actualización inmediata en la interfaz
+        document.documentElement.setAttribute('lang', lang);
+        
+        // Esto ayuda a actualizar más componentes
+        setTimeout(() => {
+          window.dispatchEvent(new Event('resize'));
+        }, 50);
       } catch (e) {
         console.error('Error saving language preference', e);
       }
@@ -240,10 +259,19 @@ export const useSyncLanguage = (initialLanguage?: Language) => {
   }, []);
   
   const setLanguage = (lang: Language) => {
+    console.log(`Cambiando idioma a: ${lang} (sync)`);
     setLanguageState(lang);
     try {
       localStorage.setItem('language', lang);
       window.dispatchEvent(new CustomEvent('language-change', { detail: { language: lang } }));
+      
+      // Forzar una actualización inmediata en la interfaz
+      document.documentElement.setAttribute('lang', lang);
+      
+      // Esto ayuda a actualizar más componentes
+      setTimeout(() => {
+        window.dispatchEvent(new Event('resize'));
+      }, 50);
     } catch (e) {
       console.error('Error saving language preference', e);
     }
