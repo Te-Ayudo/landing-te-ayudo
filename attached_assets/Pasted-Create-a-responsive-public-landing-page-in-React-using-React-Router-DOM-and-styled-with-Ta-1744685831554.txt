@@ -1,0 +1,42 @@
+Create a responsive public landing page in **React** using **React Router DOM** and styled with **Tailwind CSS** for a startup called "Te Ayudo", a SaaS ERP platform for service businesses in LATAM.
+
+### Branding:
+- Primary color: #ff770f (orange)
+- Secondary color: #5ccdcc (light blue)
+- Base color: #ffffff (white)
+- Typography: Poppins (Google Fonts)
+
+### Navigation bar with 5 sections:
+1. **Mission & Vision**  
+   - Static, clean section with informative company values and vision.
+
+2. **Roadmap**  
+   - Horizontal timeline split by years and quarters.
+   - Include animated milestones based on their startup deck (e.g. Product-Market Fit, AI Integration, Expansion in Bolivia, Exit strategy).
+   - Use the `react-vertical-timeline-component` library or create a custom SVG-based horizontal timeline with Tailwind animations.
+
+3. **Product & Pricing**  
+   - Two areas to upload images:
+     - First section: Visuals and descriptions of the Client and Employee mobile apps.
+     - Second section: Visual for the SaaS platform and the custom private landing per business.
+   - Include an embedded YouTube video using `<iframe>` to showcase how the ecosystem works.
+   - Add a pricing comparison table with 4 plans:
+     - **Freemium**: Calendar + Configs only
+     - **Standard**: CRM + Private Landing + Balance + Benefits
+     - **Franchise**: Standard + Branches
+     - **Enterprise**: Standard + Inventory + Promotions
+     - **Extras**: Unlimited WhatsApp messages, AI support on WhatsApp, Billing system
+   - Each plan includes a “Request Demo” button.
+
+4. **Contact Us**  
+   - Display business contact info.
+   - Include a WhatsApp button linking to: `https://wa.me/59178104295` that opens chat directly.
+
+5. **Affiliate Login**  
+   - Simple redirection button to: `https://app.teayudo.com.bo/#/login`
+
+### Additional Instructions:
+- Use **React Router DOM** to handle page navigation without refreshing.
+- Use **Lucide** or **Heroicons** for a clean modern icon set.
+- Layout must be **fully responsive**, optimized for both desktop and mobile users.
+- No authentication required. All content is public and for information only.
