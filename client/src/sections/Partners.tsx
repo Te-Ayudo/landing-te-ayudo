@@ -2,8 +2,9 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { ChevronLeft, ChevronRight, Filter } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
-// Estas traducciones serán eliminadas luego ya que ahora usamos el contexto global
-const translationsBackup = {
+// Mantenemos estas traducciones solo para el manejo de los nombres de industrias
+// El resto de textos se maneja a través del contexto global de idioma
+const translations = {
   es: {
     title: 'Empresas que Confían en Nosotros',
     subtitle: 'Más de 40 empresas líderes en sus industrias ya utilizan Te Ayudo para optimizar sus operaciones y mejorar la experiencia de sus clientes.',
