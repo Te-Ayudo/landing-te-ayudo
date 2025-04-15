@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { ChevronLeft, ChevronRight, Filter } from "lucide-react";
-import { useLanguage } from "@/context/LanguageContext";
+import { useLanguage } from "@/context/NewLanguageContext";
 
 // Mantenemos estas traducciones solo para el manejo de los nombres de industrias
 // El resto de textos se maneja a través del contexto global de idioma
