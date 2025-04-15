@@ -84,6 +84,7 @@ export const translations = {
     'product.addons.ai.description': 'Asistente virtual con IA para responder consultas de tus clientes.',
     'product.addons.billing.title': 'Sistema de Facturación',
     'product.addons.billing.description': 'Genera facturas electrónicas y gestiona impuestos automáticamente.',
+    
     // Navbar
     'nav.mission': 'Misión y Visión',
     'nav.roadmap': 'Nuestra Ruta',
@@ -309,22 +310,21 @@ export const translations = {
 };
 
 // Definición de tipos para el contexto
-type LanguageContextType = {
+export interface LanguageContextProps {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (key: string) => string;
-};
+}
 
-// Creación del contexto
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
-
-// Props para el proveedor
-type LanguageProviderProps = {
-  children: ReactNode;
-};
+// Creación del contexto con un valor predeterminado
+export const LanguageContext = createContext<LanguageContextProps>({
+  language: 'es',
+  setLanguage: () => {},
+  t: (key) => key,
+});
 
 // Función para obtener el idioma desde localStorage
-const getSavedLanguage = (): Language => {
+export const getSavedLanguage = (): Language => {
   try {
     const savedLanguage = localStorage.getItem('language') as Language;
     return (savedLanguage === 'es' || savedLanguage === 'en') ? savedLanguage : 'es';
@@ -333,15 +333,21 @@ const getSavedLanguage = (): Language => {
   }
 };
 
+// Props para el proveedor
+interface LanguageProviderProps {
+  children: ReactNode;
+}
+
 // Proveedor del contexto de idioma
-export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
+export function LanguageProvider({ children }: LanguageProviderProps) {
+  // Usar un estado para el idioma
   const [language, setLanguageState] = useState<Language>(getSavedLanguage);
 
-  // Función para cambiar el idioma
+  // Función mejorada para cambiar el idioma
   const setLanguage = (lang: Language) => {
     console.log(`Cambiando idioma a: ${lang}`);
     try {
-      // Primero actualizamos el estado local
+      // Actualizamos el estado local
       setLanguageState(lang);
       
       // Guardamos en localStorage
@@ -350,18 +356,15 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       // Configuramos el atributo lang del documento
       document.documentElement.setAttribute('lang', lang);
       
-      // Enviamos un evento personalizado para que otros componentes se actualicen
+      // Disparamos múltiples eventos para asegurar la actualización
       window.dispatchEvent(new CustomEvent('language-change', { 
         detail: { language: lang },
         bubbles: true,
         cancelable: true
       }));
-      
-      // Disparamos eventos adicionales para forzar la actualización de la UI
       document.dispatchEvent(new Event('languageChanged'));
-      window.dispatchEvent(new Event('resize'));
       
-      // Usamos un timeout para asegurar que todos los componentes se actualicen
+      // Usar un timeout para asegurar que React tenga tiempo de actualizar el DOM
       setTimeout(() => {
         window.dispatchEvent(new Event('storage')); // Simula un cambio en localStorage
         window.dispatchEvent(new Event('resize'));
@@ -371,7 +374,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     }
   };
 
-  // Función de traducción - usando useMemo para que sea reactiva
+  // Función de traducción optimizada con useMemo
   const t = useMemo(() => {
     return (key: string): string => {
       try {
@@ -382,9 +385,9 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
         return key;
       }
     };
-  }, [language]); // Se actualizará cuando cambie el idioma
+  }, [language]);
 
-  // Escuchar cambios de idioma de otros componentes
+  // Escuchar cambios de idioma globales (para sincronización entre componentes)
   useEffect(() => {
     const handleLanguageChange = (event: Event) => {
       const customEvent = event as CustomEvent;
@@ -394,130 +397,40 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     };
 
     window.addEventListener('language-change', handleLanguageChange);
+    window.addEventListener('storage', () => {
+      const newLang = getSavedLanguage();
+      if (newLang !== language) {
+        setLanguageState(newLang);
+      }
+    });
+    
     return () => {
       window.removeEventListener('language-change', handleLanguageChange);
+      window.removeEventListener('storage', () => {});
     };
-  }, []);
+  }, [language]);
+
+  // Value memoizado para evitar renders innecesarios
+  const contextValue = useMemo(() => ({
+    language,
+    setLanguage,
+    t
+  }), [language, t]);
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={contextValue}>
       {children}
     </LanguageContext.Provider>
   );
-};
+}
 
 // Hook personalizado para usar el contexto de idioma
-export const useLanguage = (): LanguageContextType => {
+export function useLanguage(): LanguageContextProps {
   const context = useContext(LanguageContext);
   
-  // Si el contexto no está disponible, proporcionar un fallback
-  if (context === undefined) {
-    const [language, setLanguageState] = useState<Language>(getSavedLanguage);
-    
-    const setLanguage = (lang: Language) => {
-      console.log(`Cambiando idioma a: ${lang} (fallback)`);
-      try {
-        // Primero actualizamos el estado local
-        setLanguageState(lang);
-        
-        // Guardamos en localStorage
-        localStorage.setItem('language', lang);
-        
-        // Configuramos el atributo lang del documento
-        document.documentElement.setAttribute('lang', lang);
-        
-        // Enviamos un evento personalizado para que otros componentes se actualicen
-        window.dispatchEvent(new CustomEvent('language-change', { 
-          detail: { language: lang },
-          bubbles: true,
-          cancelable: true
-        }));
-        
-        // Disparamos eventos adicionales para forzar la actualización de la UI
-        document.dispatchEvent(new Event('languageChanged'));
-        window.dispatchEvent(new Event('resize'));
-        
-        // Usamos un timeout para asegurar que todos los componentes se actualicen
-        setTimeout(() => {
-          window.dispatchEvent(new Event('storage')); // Simula un cambio en localStorage
-          window.dispatchEvent(new Event('resize'));
-        }, 10);
-      } catch (e) {
-        console.error('Error saving language preference', e);
-      }
-    };
-    
-    const t = (key: string): string => {
-      try {
-        const currentTranslations = language === 'es' ? translations.es : translations.en;
-        return currentTranslations[key as keyof typeof currentTranslations] || key;
-      } catch (error) {
-        console.error(`Translation error for key: ${key}`, error);
-        return key;
-      }
-    };
-    
-    return { language, setLanguage, t };
+  if (!context) {
+    throw new Error('useLanguage must be used within a LanguageProvider');
   }
   
   return context;
-};
-
-// Hook para sincronizar idioma entre componentes
-export const useSyncLanguage = (initialLanguage?: Language) => {
-  const [language, setLanguageState] = useState<Language>(() => 
-    initialLanguage || getSavedLanguage()
-  );
-  
-  useEffect(() => {
-    const handleLanguageChange = (event: Event) => {
-      const customEvent = event as CustomEvent;
-      if (customEvent.detail && customEvent.detail.language) {
-        setLanguageState(customEvent.detail.language);
-      }
-    };
-    
-    window.addEventListener('language-change', handleLanguageChange);
-    return () => {
-      window.removeEventListener('language-change', handleLanguageChange);
-    };
-  }, []);
-  
-  const setLanguage = (lang: Language) => {
-    console.log(`Cambiando idioma a: ${lang} (sync)`);
-    try {
-      // Primero actualizamos el estado local
-      setLanguageState(lang);
-      
-      // Guardamos en localStorage
-      localStorage.setItem('language', lang);
-      
-      // Configuramos el atributo lang del documento
-      document.documentElement.setAttribute('lang', lang);
-      
-      // Enviamos un evento personalizado para que otros componentes se actualicen
-      window.dispatchEvent(new CustomEvent('language-change', { 
-        detail: { language: lang },
-        bubbles: true,
-        cancelable: true
-      }));
-      
-      // Disparamos eventos adicionales para forzar la actualización de la UI
-      document.dispatchEvent(new Event('languageChanged'));
-      window.dispatchEvent(new Event('resize'));
-      
-      // Usamos un timeout para asegurar que todos los componentes se actualicen
-      setTimeout(() => {
-        window.dispatchEvent(new Event('storage')); // Simula un cambio en localStorage
-        window.dispatchEvent(new Event('resize'));
-      }, 10);
-    } catch (e) {
-      console.error('Error saving language preference', e);
-    }
-  };
-  
-  return { language, setLanguage };
-};
-
-// Exportamos el contexto como nombrado, no como default
-export { LanguageContext };
+}
