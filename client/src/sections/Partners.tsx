@@ -3,191 +3,182 @@ import { ChevronLeft, ChevronRight, Filter } from "lucide-react";
 
 // Company logos data
 const partnerLogos = [
+  // Hogar
+  {
+    name: "Clean House",
+    logo: "https://img.icons8.com/fluency/96/000000/vacuum-cleaner.png",
+    industry: "Hogar"
+  },
+  {
+    name: "Plomeros Express",
+    logo: "https://img.icons8.com/fluency/96/000000/plumbing.png",
+    industry: "Hogar"
+  },
+  {
+    name: "Electricistas 24/7",
+    logo: "https://img.icons8.com/fluency/96/000000/electrical.png",
+    industry: "Hogar"
+  },
+  {
+    name: "Jardinería Verde",
+    logo: "https://img.icons8.com/fluency/96/000000/garden-shears.png",
+    industry: "Hogar"
+  },
+  {
+    name: "Pintores Pro",
+    logo: "https://img.icons8.com/fluency/96/000000/paint-roller.png",
+    industry: "Hogar"
+  },
+  {
+    name: "Carpinteros Premium",
+    logo: "https://img.icons8.com/fluency/96/000000/saw.png",
+    industry: "Hogar"
+  },
+  {
+    name: "Aire Fresco",
+    logo: "https://img.icons8.com/fluency/96/000000/air-conditioner.png",
+    industry: "Hogar"
+  },
+  {
+    name: "Decoración Interior",
+    logo: "https://img.icons8.com/fluency/96/000000/interior-design.png",
+    industry: "Hogar"
+  },
+  
+  // Vehículos
+  {
+    name: "Mecánica Rápida",
+    logo: "https://img.icons8.com/fluency/96/000000/car-service.png", 
+    industry: "Vehículos"
+  },
+  {
+    name: "Lavado Express",
+    logo: "https://img.icons8.com/fluency/96/000000/car-wash.png", 
+    industry: "Vehículos"
+  },
+  {
+    name: "Grúas 24 Horas",
+    logo: "https://img.icons8.com/fluency/96/000000/tow-truck.png", 
+    industry: "Vehículos"
+  },
+  {
+    name: "Neumáticos Seguros",
+    logo: "https://img.icons8.com/fluency/96/000000/tire.png", 
+    industry: "Vehículos"
+  },
+  {
+    name: "Pintura Automotriz",
+    logo: "https://img.icons8.com/fluency/96/000000/spray-paint.png", 
+    industry: "Vehículos"
+  },
+  {
+    name: "Electricidad Automotriz",
+    logo: "https://img.icons8.com/fluency/96/000000/car-battery.png", 
+    industry: "Vehículos"
+  },
+  {
+    name: "Motor Tech",
+    logo: "https://img.icons8.com/fluency/96/000000/engine.png", 
+    industry: "Vehículos"
+  },
+  {
+    name: "Vidrios y Polarizados",
+    logo: "https://img.icons8.com/fluency/96/000000/windshield.png", 
+    industry: "Vehículos"
+  },
+  
   // Salud
   {
-    name: "Hospital Premier",
-    logo: "https://img.icons8.com/fluency/96/000000/hospital-3.png",
+    name: "Médicos a Domicilio",
+    logo: "https://img.icons8.com/fluency/96/000000/doctor-male.png",
     industry: "Salud"
   },
   {
-    name: "Clínica Vitalidad",
-    logo: "https://img.icons8.com/fluency/96/000000/clinic.png",
-    industry: "Salud"
-  },
-  {
-    name: "Dental Sonrisa",
-    logo: "https://img.icons8.com/fluency/96/000000/tooth.png",
-    industry: "Salud"
-  },
-  {
-    name: "Fisiocentro",
+    name: "Fisioterapia Pro",
     logo: "https://img.icons8.com/fluency/96/000000/physical-therapy.png",
     industry: "Salud"
   },
   {
-    name: "Laboratorio Análisis",
+    name: "Nutrición Esencial",
+    logo: "https://img.icons8.com/fluency/96/000000/healthy-food.png",
+    industry: "Salud"
+  },
+  {
+    name: "Enfermería 24/7",
+    logo: "https://img.icons8.com/fluency/96/000000/nurse-female.png",
+    industry: "Salud"
+  },
+  {
+    name: "Ambulancias Rápidas",
+    logo: "https://img.icons8.com/fluency/96/000000/ambulance.png",
+    industry: "Salud"
+  },
+  {
+    name: "Laboratorio Móvil",
     logo: "https://img.icons8.com/fluency/96/000000/test-tube.png",
     industry: "Salud"
   },
-  
-  // Tecnología
   {
-    name: "TechSolutions",
-    logo: "https://img.icons8.com/fluency/96/000000/cloud-computing.png", 
-    industry: "Tecnología"
+    name: "Odontología Express",
+    logo: "https://img.icons8.com/fluency/96/000000/tooth.png",
+    industry: "Salud"
   },
   {
-    name: "DataCore",
-    logo: "https://img.icons8.com/fluency/96/000000/database.png", 
-    industry: "Tecnología"
-  },
-  {
-    name: "InnovaTech",
-    logo: "https://img.icons8.com/fluency/96/000000/circuit.png", 
-    industry: "Tecnología"
-  },
-  {
-    name: "DigitalWave",
-    logo: "https://img.icons8.com/fluency/96/000000/code.png", 
-    industry: "Tecnología"
-  },
-  {
-    name: "BrainByte",
-    logo: "https://img.icons8.com/fluency/96/000000/neural-connections.png", 
-    industry: "Tecnología"
+    name: "Psicología Online",
+    logo: "https://img.icons8.com/fluency/96/000000/mental-health.png",
+    industry: "Salud"
   },
   
-  // Financiero
+  // Belleza
   {
-    name: "Capital Finance",
-    logo: "https://img.icons8.com/fluency/96/000000/bank-building.png",
-    industry: "Financiero"
+    name: "Estilistas Premium",
+    logo: "https://img.icons8.com/fluency/96/000000/scissors.png",
+    industry: "Belleza"
   },
   {
-    name: "InverGroup",
-    logo: "https://img.icons8.com/fluency/96/000000/money-bag.png",
-    industry: "Financiero"
+    name: "Maquillaje Profesional",
+    logo: "https://img.icons8.com/fluency/96/000000/makeup.png",
+    industry: "Belleza"
   },
   {
-    name: "Crédito Amigo",
-    logo: "https://img.icons8.com/fluency/96/000000/card-in-use.png",
-    industry: "Financiero"
+    name: "Uñas Perfectas",
+    logo: "https://img.icons8.com/fluency/96/000000/nail-polish.png",
+    industry: "Belleza"
   },
   {
-    name: "Aseguradora Nacional",
-    logo: "https://img.icons8.com/fluency/96/000000/shield.png",
-    industry: "Financiero"
+    name: "Masajes Relajantes",
+    logo: "https://img.icons8.com/fluency/96/000000/massage.png",
+    industry: "Belleza"
   },
   {
-    name: "Planifica Futuro",
-    logo: "https://img.icons8.com/fluency/96/000000/stocks-growth.png",
-    industry: "Financiero"
-  },
-  
-  // Retail
-  {
-    name: "MegaStore",
-    logo: "https://img.icons8.com/fluency/96/000000/shop.png",
-    industry: "Retail"
+    name: "Belleza Móvil",
+    logo: "https://img.icons8.com/fluency/96/000000/barbershop.png",
+    industry: "Belleza"
   },
   {
-    name: "Fashion Express",
-    logo: "https://img.icons8.com/fluency/96/000000/t-shirt.png",
-    industry: "Retail"
+    name: "SPA Express",
+    logo: "https://img.icons8.com/fluency/96/000000/spa-flower.png",
+    industry: "Belleza"
   },
   {
-    name: "Electronics Pro",
-    logo: "https://img.icons8.com/fluency/96/000000/smartphone-tablet.png",
-    industry: "Retail"
+    name: "Pestañas y Cejas",
+    logo: "https://img.icons8.com/fluency/96/000000/eyelash.png",
+    industry: "Belleza"
   },
   {
-    name: "Home & Decor",
-    logo: "https://img.icons8.com/fluency/96/000000/furniture.png",
-    industry: "Retail"
-  },
-  {
-    name: "SuperMarket Plus",
-    logo: "https://img.icons8.com/fluency/96/000000/shopping-cart.png",
-    industry: "Retail"
-  },
-  
-  // Educación
-  {
-    name: "Instituto Avanzado",
-    logo: "https://img.icons8.com/fluency/96/000000/graduation-cap.png",
-    industry: "Educación"
-  },
-  {
-    name: "Colegio Futuro",
-    logo: "https://img.icons8.com/fluency/96/000000/school-building.png",
-    industry: "Educación"
-  },
-  {
-    name: "Centro de Idiomas",
-    logo: "https://img.icons8.com/fluency/96/000000/language.png",
-    industry: "Educación"
-  },
-  {
-    name: "Academia Tech",
-    logo: "https://img.icons8.com/fluency/96/000000/laptop-coding.png",
-    industry: "Educación"
-  },
-  {
-    name: "Escuela de Artes",
-    logo: "https://img.icons8.com/fluency/96/000000/paint-palette.png",
-    industry: "Educación"
-  },
-  
-  // Hospitalidad
-  {
-    name: "Hotel Estrella",
-    logo: "https://img.icons8.com/fluency/96/000000/hotel-building.png",
-    industry: "Hospitalidad"
-  },
-  {
-    name: "Restaurante Sabor",
-    logo: "https://img.icons8.com/fluency/96/000000/restaurant.png",
-    industry: "Hospitalidad"
-  },
-  {
-    name: "Café Aroma",
-    logo: "https://img.icons8.com/fluency/96/000000/coffee-cup.png",
-    industry: "Hospitalidad"
-  },
-  {
-    name: "Resort Paradise",
-    logo: "https://img.icons8.com/fluency/96/000000/palm-tree.png",
-    industry: "Hospitalidad"
-  },
-  {
-    name: "Event Center",
-    logo: "https://img.icons8.com/fluency/96/000000/confetti.png",
-    industry: "Hospitalidad"
-  },
-  
-  // Marketing
-  {
-    name: "CreativeMarketing",
-    logo: "https://img.icons8.com/fluency/96/000000/idea.png",
-    industry: "Marketing"
-  },
-  {
-    name: "Digital Growth",
-    logo: "https://img.icons8.com/fluency/96/000000/line-chart.png",
-    industry: "Marketing"
+    name: "Tratamientos Faciales",
+    logo: "https://img.icons8.com/fluency/96/000000/face-mask.png",
+    industry: "Belleza"
   }
 ];
 
 // Industries with colors for filtering
 const industries = [
   { name: "Todos", color: "#ff770f" },
+  { name: "Hogar", color: "#5ccdcc" },
+  { name: "Vehículos", color: "#ff770f" },
   { name: "Salud", color: "#5ccdcc" },
-  { name: "Tecnología", color: "#ff770f" },
-  { name: "Financiero", color: "#5ccdcc" },
-  { name: "Retail", color: "#ff770f" },
-  { name: "Educación", color: "#5ccdcc" },
-  { name: "Hospitalidad", color: "#ff770f" },
-  { name: "Marketing", color: "#5ccdcc" }
+  { name: "Belleza", color: "#ff770f" }
 ];
 
 const Partners = () => {
@@ -217,8 +208,30 @@ const Partners = () => {
   const filteredLogos = activeIndustry === "Todos"
     ? partnerLogos
     : partnerLogos.filter(logo => logo.industry === activeIndustry);
+    
+  // Function to organize logos into a 2D array: rows and columns
+  // Each row has 6 logos (for larger screens), fewer on smaller screens
+  const organizeLogosIntoRows = useCallback(() => {
+    const logosPerRow = 6;
+    const rowsToShow = 2; // Show 2 rows at a time
+    const result = [];
+    
+    // Create rows of logos
+    for (let i = 0; i < filteredLogos.length; i += logosPerRow) {
+      result.push(filteredLogos.slice(i, i + logosPerRow));
+    }
+    
+    // Group rows into pages (2 rows per page)
+    const pages = [];
+    for (let i = 0; i < result.length; i += rowsToShow) {
+      pages.push(result.slice(i, i + rowsToShow));
+    }
+    
+    return pages;
+  }, [filteredLogos]);
   
-  const totalSlides = Math.ceil(filteredLogos.length / 6);
+  const organizedLogos = organizeLogosIntoRows();
+  const totalSlides = organizedLogos.length;
   
   // Auto-scroll carousel
   useEffect(() => {
@@ -337,23 +350,40 @@ const Partners = () => {
               className="overflow-hidden rounded-xl border border-gray-100 shadow-sm bg-white p-6"
             >
               <div 
-                className="transition-transform duration-500 ease-in-out grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4"
+                className="transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
               >
-                {filteredLogos.map((partner, index) => (
-                  <div
-                    key={partner.name + index}
-                    className="flex flex-col items-center justify-center p-3 hover:scale-110 transition-transform duration-300 cursor-pointer"
+                {organizedLogos.map((page, pageIndex) => (
+                  <div 
+                    key={`page-${pageIndex}`}
+                    className={`absolute w-full transition-opacity duration-300 ${
+                      pageIndex === currentSlide ? "opacity-100" : "opacity-0 pointer-events-none"
+                    }`}
+                    style={{ left: `${pageIndex * 100}%` }}
                   >
-                    <div className="bg-gray-50 p-3 rounded-full mb-2 hover:bg-[#fff8f0] transition-colors">
-                      <img
-                        src={partner.logo}
-                        alt={`Logo de ${partner.name}`}
-                        className="h-14 w-14 object-contain"
-                      />
-                    </div>
-                    <span className="text-sm font-medium text-center hover:text-[#ff770f] transition-colors">{partner.name}</span>
-                    <span className="text-xs text-gray-500">{partner.industry}</span>
+                    {page.map((row, rowIndex) => (
+                      <div 
+                        key={`row-${pageIndex}-${rowIndex}`} 
+                        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 w-full mb-6"
+                      >
+                        {row.map((partner, partnerIndex) => (
+                          <div
+                            key={`${partner.name}-${pageIndex}-${rowIndex}-${partnerIndex}`}
+                            className="flex flex-col items-center justify-center p-3 hover:scale-110 transition-transform duration-300 cursor-pointer"
+                          >
+                            <div className="bg-gray-50 p-3 rounded-full mb-2 hover:bg-[#fff8f0] transition-colors">
+                              <img
+                                src={partner.logo}
+                                alt={`Logo de ${partner.name}`}
+                                className="h-14 w-14 object-contain"
+                              />
+                            </div>
+                            <span className="text-sm font-medium text-center hover:text-[#ff770f] transition-colors">{partner.name}</span>
+                            <span className="text-xs text-gray-500">{partner.industry}</span>
+                          </div>
+                        ))}
+                      </div>
+                    ))}
                   </div>
                 ))}
               </div>
@@ -366,6 +396,7 @@ const Partners = () => {
                   <button 
                     onClick={goToPrevSlide}
                     className="p-2 rounded-full bg-white shadow-md text-gray-700 hover:text-[#ff770f] transition-colors -ml-3"
+                    aria-label="Anterior"
                   >
                     <ChevronLeft className="h-5 w-5" />
                   </button>
@@ -374,6 +405,7 @@ const Partners = () => {
                   <button 
                     onClick={goToNextSlide}
                     className="p-2 rounded-full bg-white shadow-md text-gray-700 hover:text-[#ff770f] transition-colors -mr-3"
+                    aria-label="Siguiente"
                   >
                     <ChevronRight className="h-5 w-5" />
                   </button>
@@ -388,7 +420,7 @@ const Partners = () => {
                       className={`w-2.5 h-2.5 rounded-full transition-colors ${
                         currentSlide === index ? "bg-[#ff770f]" : "bg-gray-300 hover:bg-gray-400"
                       }`}
-                      aria-label={`Go to slide ${index + 1}`}
+                      aria-label={`Ir a página ${index + 1}`}
                     />
                   ))}
                 </div>
