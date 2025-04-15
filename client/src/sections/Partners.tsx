@@ -451,15 +451,18 @@ const Partners = () => {
                             key={`${partner.name}-${pageIndex}-${rowIndex}-${partnerIndex}`}
                             className="flex flex-col items-center justify-center p-3 hover:scale-110 transition-transform duration-300 cursor-pointer"
                           >
-                            <div className="bg-gray-50 p-3 rounded-full mb-2 hover:bg-[#fff8f0] transition-colors">
+                            <div className="bg-gray-50 p-3 rounded-full mb-2 hover:bg-[#fff8f0] transition-colors flex items-center justify-center" style={{ width: '70px', height: '70px' }}>
                               <img
                                 src={partner.logo}
                                 alt={`Logo de ${partner.name}`}
-                                className="h-14 w-14 object-contain"
+                                className="h-12 w-12 object-contain"
+                                loading="lazy"
                               />
                             </div>
-                            <span className="text-sm font-medium text-center hover:text-[#ff770f] transition-colors">{partner.name}</span>
-                            <span className="text-xs text-gray-500">{partner.industry}</span>
+                            <div className="flex flex-col items-center">
+                              <span className="text-sm font-medium text-center hover:text-[#ff770f] transition-colors line-clamp-1 w-full">{partner.name}</span>
+                              <span className="text-xs text-gray-500 line-clamp-1">{partner.industry}</span>
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -517,15 +520,18 @@ const Partners = () => {
                 key={`grid-${partner.name}-${index}`}
                 className="flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-all hover:border-[#ff770f]/30 hover:scale-105 group cursor-pointer"
               >
-                <div className="bg-gray-50 p-3 rounded-full mb-3 group-hover:bg-[#fff8f0] transition-colors">
+                <div className="bg-gray-50 p-3 rounded-full mb-3 group-hover:bg-[#fff8f0] transition-colors flex items-center justify-center" style={{ width: '80px', height: '80px' }}>
                   <img
                     src={partner.logo}
                     alt={`Logo de ${partner.name}`}
                     className="h-14 w-14 object-contain"
+                    loading="lazy"
                   />
                 </div>
-                <span className="text-sm font-medium text-center group-hover:text-[#ff770f] transition-colors">{partner.name}</span>
-                <span className="text-xs text-gray-500 mt-1">{partner.industry}</span>
+                <div className="flex flex-col items-center w-full">
+                  <span className="text-sm font-medium text-center group-hover:text-[#ff770f] transition-colors line-clamp-1 w-full">{partner.name}</span>
+                  <span className="text-xs text-gray-500 mt-1 line-clamp-1">{partner.industry}</span>
+                </div>
               </div>
             ))}
           </div>

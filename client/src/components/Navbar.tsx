@@ -3,32 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu, X, Globe } from "lucide-react";
 import { scrollToSection } from "@/lib/utils";
 import teAyudoLogo from "@assets/TE AYUDO Logo-03 (1).png";
-
-// Traducciones locales para el componente Navbar
-const translations = {
-  es: {
-    mission: 'Misión y Visión',
-    roadmap: 'Nuestra Ruta',
-    product: 'Productos',
-    partners: 'Socios',
-    contact: 'Contacto',
-    language: {
-      es: 'Español',
-      en: 'Inglés'
-    }
-  },
-  en: {
-    mission: 'Mission & Vision',
-    roadmap: 'Our Roadmap',
-    product: 'Products',
-    partners: 'Partners',
-    contact: 'Contact',
-    language: {
-      es: 'Spanish',
-      en: 'English'
-    }
-  }
-};
+import { useLanguage } from "@/context/LanguageContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
