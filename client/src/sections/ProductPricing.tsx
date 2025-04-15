@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { 
   Users, 
   Globe, 
@@ -11,6 +11,7 @@ import {
   PlayCircle
 } from "lucide-react";
 import { scrollToSection } from "@/lib/utils";
+import { useLanguage } from "@/context/LanguageContext";
 
 // Imágenes reales
 import clientAppImage from "@assets/Post & Imagenes_20250415_134221_0001.png";
@@ -76,14 +77,26 @@ const pricingPlans = [
 
 const ProductPricing = () => {
   const [activeTab, setActiveTab] = useState<"mobile" | "platform">("mobile");
+  const { t, language } = useLanguage();
+  
+  // Volver a renderizar cuando cambie el idioma
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      // Forzar actualización del componente
+      setActiveTab(prev => prev === "mobile" ? "mobile" : "platform");
+    };
+    
+    document.addEventListener('languageChanged', handleLanguageChange);
+    return () => document.removeEventListener('languageChanged', handleLanguageChange);
+  }, [language]);
 
   return (
     <section id="product" className="py-16 bg-[#ffffff]">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Producto & Precios</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('product.title')}</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Descubre nuestra plataforma integral para empresas de servicios y encuentra el plan que mejor se adapte a tus necesidades.
+            {t('product.description')}
           </p>
           <div className="w-24 h-1 bg-[#ff770f] mx-auto mt-4 rounded-full"></div>
         </div>
@@ -100,7 +113,7 @@ const ProductPricing = () => {
                     : "bg-white text-gray-700 hover:bg-gray-50"
                 }`}
               >
-                Aplicaciones Móviles
+                {t('product.tabs.mobile')}
               </button>
               <button
                 onClick={() => setActiveTab("platform")}
@@ -110,7 +123,7 @@ const ProductPricing = () => {
                     : "bg-white text-gray-700 hover:bg-gray-50"
                 }`}
               >
-                Plataforma SaaS & Landing
+                {t('product.tabs.platform')}
               </button>
             </div>
           </div>

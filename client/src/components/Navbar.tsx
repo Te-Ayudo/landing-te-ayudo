@@ -55,8 +55,18 @@ const Navbar = () => {
   };
 
   const changeLanguage = (lang: 'es' | 'en') => {
+    console.log(`Cambiando idioma desde Navbar a: ${lang}`);
     setLanguage(lang);
     setShowLanguageMenu(false);
+    
+    // Forzar una actualización global
+    document.documentElement.lang = lang;
+    document.dispatchEvent(new Event('languageChanged'));
+    
+    // Este pequeño timeout ayuda a que los componentes se actualicen
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 10);
   };
 
   return (
