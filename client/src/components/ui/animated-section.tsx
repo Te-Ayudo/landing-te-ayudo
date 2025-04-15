@@ -1,9 +1,13 @@
+import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-export interface AnimatedSectionProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface AnimatedSectionProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'animate'> {
   children: React.ReactNode;
   delay?: number;
+  animate?: any;
+  initial?: any;
+  transition?: any;
 }
 
 export const fadeInUp = {
@@ -49,26 +53,28 @@ export function AnimatedSection({
   delay = 0, 
   ...props 
 }: AnimatedSectionProps) {
-  return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
-      variants={{
-        hidden: { opacity: 0, y: 30 },
-        visible: { 
-          opacity: 1, 
-          y: 0,
-          transition: {
-            duration: 0.6,
-            ease: "easeOut",
-            delay: delay,
-          }
+  const motionProps = {
+    initial: "hidden",
+    whileInView: "visible",
+    viewport: { once: true, margin: "-100px" },
+    variants: {
+      hidden: { opacity: 0, y: 30 },
+      visible: { 
+        opacity: 1, 
+        y: 0,
+        transition: {
+          duration: 0.6,
+          ease: "easeOut",
+          delay: delay,
         }
-      }}
-      className={cn(className)}
-      {...props}
-    >
+      }
+    },
+    className: cn(className),
+    ...props
+  } as React.ComponentProps<typeof motion.div>;
+  
+  return (
+    <motion.div {...motionProps}>
       {children}
     </motion.div>
   );
@@ -87,24 +93,26 @@ export function AnimatedStaggerContainer({
   delay?: number;
   staggerDelay?: number;
 }) {
-  return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
-      variants={{
-        hidden: { opacity: 0 },
-        visible: { 
-          opacity: 1,
-          transition: {
-            delayChildren: delay,
-            staggerChildren: staggerDelay,
-          }
+  const motionProps = {
+    initial: "hidden",
+    whileInView: "visible",
+    viewport: { once: true, margin: "-100px" },
+    variants: {
+      hidden: { opacity: 0 },
+      visible: { 
+        opacity: 1,
+        transition: {
+          delayChildren: delay,
+          staggerChildren: staggerDelay,
         }
-      }}
-      className={cn(className)}
-      {...props}
-    >
+      }
+    },
+    className: cn(className),
+    ...props
+  } as React.ComponentProps<typeof motion.div>;
+  
+  return (
+    <motion.div {...motionProps}>
       {children}
     </motion.div>
   );
@@ -119,12 +127,14 @@ export function AnimatedStaggerItem({
   children: React.ReactNode;
   className?: string;
 }) {
+  const motionProps = {
+    variants: fadeInStagger,
+    className: cn(className),
+    ...props
+  } as React.ComponentProps<typeof motion.div>;
+  
   return (
-    <motion.div
-      variants={fadeInStagger}
-      className={cn(className)}
-      {...props}
-    >
+    <motion.div {...motionProps}>
       {children}
     </motion.div>
   );
@@ -144,18 +154,20 @@ export function AnimatedTextReveal({
 }) {
   const words = text.split(" ");
   
+  const containerProps = {
+    initial: "hidden",
+    whileInView: "visible",
+    viewport: { once },
+    className: cn("inline-block", className)
+  } as React.ComponentProps<typeof motion.div>;
+  
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once }}
-      className={cn("inline-block", className)}
-    >
-      {words.map((word, i) => (
-        <motion.span
-          key={`word-${i}`}
-          className="inline-block mr-1"
-          variants={{
+    <motion.div {...containerProps}>
+      {words.map((word, i) => {
+        const wordProps = {
+          key: `word-${i}`,
+          className: "inline-block mr-1",
+          variants: {
             hidden: { opacity: 0, y: 20 },
             visible: {
               opacity: 1,
@@ -165,11 +177,15 @@ export function AnimatedTextReveal({
                 delay: delay + i * 0.1,
               }
             }
-          }}
-        >
-          {word}
-        </motion.span>
-      ))}
+          }
+        } as React.ComponentProps<typeof motion.span>;
+        
+        return (
+          <motion.span {...wordProps}>
+            {word}
+          </motion.span>
+        );
+      })}
     </motion.div>
   );
 }
@@ -186,26 +202,36 @@ export function AnimatedCounter({
   className?: string;
   suffix?: string;
 }) {
+  // Using a simpler approach without custom motion values
+  const [count, setCount] = useState(0);
+  const countRef = useRef(0);
+  
+  useEffect(() => {
+    countRef.current = 0;
+    const step = Math.ceil(end / (duration * 20)); // 20 fps animation approx
+    
+    const interval = setInterval(() => {
+      if (countRef.current < end) {
+        countRef.current = Math.min(countRef.current + step, end);
+        setCount(countRef.current);
+      } else {
+        clearInterval(interval);
+      }
+    }, 50);
+    
+    return () => clearInterval(interval);
+  }, [end, duration]);
+  
+  const motionProps = {
+    className: cn(className),
+    initial: { opacity: 0 },
+    whileInView: { opacity: 1 },
+    viewport: { once: true }
+  } as React.ComponentProps<typeof motion.span>;
+  
   return (
-    <motion.span
-      className={cn(className)}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-    >
-      <motion.span
-        initial={{ count: 0 }}
-        whileInView={{ count: end }}
-        viewport={{ once: true }}
-        transition={{
-          duration: duration,
-          ease: "easeOut",
-        }}
-        // @ts-ignore - count is a custom prop
-        animate={{ count: end }}
-      >
-        {({ count }) => Math.floor(count) + suffix}
-      </motion.span>
+    <motion.span {...motionProps}>
+      {Math.floor(count)}{suffix}
     </motion.span>
   );
 }

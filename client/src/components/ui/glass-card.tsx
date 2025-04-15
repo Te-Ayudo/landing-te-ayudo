@@ -56,16 +56,19 @@ export function GlassCard({
   whileTap,
   ...props
 }: GlassCardProps) {
+  // Using type assertion to handle prop type incompatibilities with motion.div
+  const motionProps = {
+    className: cn(glassCardVariants({ variant, size, animation, className })),
+    initial,
+    animate,
+    transition,
+    whileHover: whileHover || (animation === "hover" ? { scale: 1.02 } : undefined),
+    whileTap: whileTap || (animation === "hover" ? { scale: 0.98 } : undefined),
+    ...props
+  } as React.ComponentProps<typeof motion.div>;
+  
   return (
-    <motion.div
-      className={cn(glassCardVariants({ variant, size, animation, className }))}
-      initial={initial}
-      animate={animate}
-      transition={transition}
-      whileHover={whileHover || (animation === "hover" ? { scale: 1.02 } : undefined)}
-      whileTap={whileTap || (animation === "hover" ? { scale: 0.98 } : undefined)}
-      {...props}
-    >
+    <motion.div {...motionProps}>
       {children}
     </motion.div>
   );

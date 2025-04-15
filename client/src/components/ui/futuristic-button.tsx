@@ -65,19 +65,23 @@ const FuturisticButton = React.forwardRef<
     },
     ref
   ) => {
+    // Use type assertion to handle incompatible props between React and Framer Motion
+    const motionProps = {
+      className: cn(buttonVariants({ variant, size, animation, className })),
+      whileHover:
+        animation === "bounce"
+          ? { scale: 1.05 }
+          : animation === "glow"
+          ? { boxShadow: "0 0 8px rgba(255, 119, 15, 0.6)" }
+          : undefined,
+      whileTap: { scale: 0.95 },
+      ...props
+    } as React.ComponentProps<typeof motion.button>;
+    
     return (
       <motion.button
-        className={cn(buttonVariants({ variant, size, animation, className }))}
         ref={ref}
-        whileHover={
-          animation === "bounce"
-            ? { scale: 1.05 }
-            : animation === "glow"
-            ? { boxShadow: "0 0 8px rgba(255, 119, 15, 0.6)" }
-            : undefined
-        }
-        whileTap={{ scale: 0.95 }}
-        {...props}
+        {...motionProps}
       >
         {icon && iconPosition === "left" && (
           <span className="mr-2">{icon}</span>
