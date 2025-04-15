@@ -3,58 +3,58 @@ import { CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/context/LanguageContext";
 
-// Timeline data
-const timelineItems = [
-  {
-    year: "2024",
-    title: "Product-Market Fit",
-    color: "primary",
-    milestones: [
-      "Lanzamiento de aplicaciones móviles",
-      "Primeros 100 clientes en Bolivia"
-    ]
-  },
-  {
-    year: "2025",
-    title: "Integración de IA",
-    color: "secondary",
-    milestones: [
-      "Asistente virtual de WhatsApp",
-      "Análisis predictivo de demanda"
-    ]
-  },
-  {
-    year: "2026",
-    title: "Expansión Regional",
-    color: "primary",
-    milestones: [
-      "Operaciones en Perú y Colombia",
-      "1,000+ empresas activas"
-    ]
-  },
-  {
-    year: "2027",
-    title: "Ecosistema Completo",
-    color: "secondary",
-    milestones: [
-      "Marketplace de servicios B2B",
-      "Plataforma financiera integrada"
-    ]
-  },
-  {
-    year: "2028",
-    title: "Estrategia de Salida",
-    color: "primary",
-    milestones: [
-      "Presencia en 10+ países",
-      "Adquisición potencial"
-    ]
-  }
-];
-
 const Roadmap = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { t } = useLanguage();
+  
+  // Timeline data con traducciones
+  const timelineItems = [
+    {
+      year: "2024",
+      title: t('roadmap.2024'),
+      color: "primary",
+      milestones: [
+        t('roadmap.2024.milestone1'),
+        t('roadmap.2024.milestone2')
+      ]
+    },
+    {
+      year: "2025",
+      title: t('roadmap.2025'),
+      color: "secondary",
+      milestones: [
+        t('roadmap.2025.milestone1'),
+        t('roadmap.2025.milestone2')
+      ]
+    },
+    {
+      year: "2026",
+      title: t('roadmap.2026'),
+      color: "primary",
+      milestones: [
+        t('roadmap.2026.milestone1'),
+        t('roadmap.2026.milestone2')
+      ]
+    },
+    {
+      year: "2027",
+      title: t('roadmap.2027'),
+      color: "secondary",
+      milestones: [
+        t('roadmap.2027.milestone1'),
+        t('roadmap.2027.milestone2')
+      ]
+    },
+    {
+      year: "2028",
+      title: t('roadmap.2028'),
+      color: "primary",
+      milestones: [
+        t('roadmap.2028.milestone1'),
+        t('roadmap.2028.milestone2')
+      ]
+    }
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -79,9 +79,9 @@ const Roadmap = () => {
     <section id="roadmap" className="py-16 bg-[#ffffff]">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Nuestro Roadmap</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('roadmap.title')}</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Te compartimos nuestro camino y los hitos planeados para revolucionar la gestión de negocios de servicios en Latinoamérica.
+            {t('roadmap.description')}
           </p>
           <div className="w-24 h-1 bg-[#ff770f] mx-auto mt-4 rounded-full"></div>
         </div>
