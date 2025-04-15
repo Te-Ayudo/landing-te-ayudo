@@ -1,6 +1,38 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { ChevronLeft, ChevronRight, Filter } from "lucide-react";
 
+// Textos fijos para el componente en ambos idiomas
+const translations = {
+  es: {
+    title: 'Empresas que Confían en Nosotros',
+    subtitle: 'Más de 40 empresas líderes en sus industrias ya utilizan Te Ayudo para optimizar sus operaciones y mejorar la experiencia de sus clientes.',
+    companies: 'Empresas Satisfechas',
+    filter: 'Filtrar por Industria',
+    viewAll: 'Ver Todos',
+    viewCarousel: 'Ver Carrusel',
+    cta: '¿Quieres ser parte de nuestros clientes satisfechos?',
+    ctaButton: 'Contáctanos Ahora',
+    previous: 'Anterior',
+    next: 'Siguiente',
+    scrollLeft: 'Desplazar a la izquierda',
+    scrollRight: 'Desplazar a la derecha'
+  },
+  en: {
+    title: 'Companies that Trust Us',
+    subtitle: 'More than 40 leading companies in their industries already use Te Ayudo to optimize their operations and improve their customer experience.',
+    companies: 'Satisfied Companies',
+    filter: 'Filter by Industry',
+    viewAll: 'View All',
+    viewCarousel: 'View Carousel',
+    cta: 'Want to be part of our satisfied customers?',
+    ctaButton: 'Contact Us Now',
+    previous: 'Previous',
+    next: 'Next',
+    scrollLeft: 'Scroll left',
+    scrollRight: 'Scroll right'
+  }
+};
+
 // Company logos data
 const partnerLogos = [
   // Hogar
@@ -173,7 +205,7 @@ const partnerLogos = [
 ];
 
 // Industries with colors for filtering
-const industries = [
+const industriesEs = [
   { name: "Todos", color: "#ff770f" },
   { name: "Hogar", color: "#5ccdcc" },
   { name: "Vehículos", color: "#ff770f" },
@@ -181,13 +213,52 @@ const industries = [
   { name: "Belleza", color: "#ff770f" }
 ];
 
+const industriesEn = [
+  { name: "All", color: "#ff770f" },
+  { name: "Home", color: "#5ccdcc" },
+  { name: "Vehicles", color: "#ff770f" },
+  { name: "Health", color: "#5ccdcc" },
+  { name: "Beauty", color: "#ff770f" }
+];
+
 const Partners = () => {
-  const [activeIndustry, setActiveIndustry] = useState("Todos");
+  // Por defecto se usa español, pero intentamos leer del localStorage
+  const [language, setLanguage] = useState<'es' | 'en'>(() => {
+    try {
+      const savedLanguage = localStorage.getItem('language') as 'es' | 'en';
+      return (savedLanguage === 'es' || savedLanguage === 'en') ? savedLanguage : 'es';
+    } catch (e) {
+      return 'es';
+    }
+  });
+  
+  // Función de traducción simplificada
+  const t = (key: string): string => {
+    try {
+      const parts = key.split('.');
+      if (parts.length === 2 && parts[0] === 'partners') {
+        const currentTranslations = language === 'es' ? translations.es : translations.en;
+        // Convertir el formato "partners.title" a "title" para nuestro objeto de traducciones local
+        const simpleKey = parts[1] as keyof typeof translations.es;
+        return currentTranslations[simpleKey] || key;
+      }
+      return key;
+    } catch (error) {
+      console.error('Translation error', error);
+      return key;
+    }
+  };
+
+  const defaultIndustry = language === 'es' ? "Todos" : "All";
+  const [activeIndustry, setActiveIndustry] = useState(defaultIndustry);
   const [companyCount, setCompanyCount] = useState(0);
   const [showAllLogos, setShowAllLogos] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const filtersRef = useRef<HTMLDivElement>(null);
+  
+  // Use the correct industries based on language
+  const industries = language === 'es' ? industriesEs : industriesEn;
   
   // Animate the company count
   useEffect(() => {
@@ -205,9 +276,22 @@ const Partners = () => {
   }, [companyCount]);
   
   // Filter logos based on selected industry
-  const filteredLogos = activeIndustry === "Todos"
+  const isAllFilter = activeIndustry === "Todos" || activeIndustry === "All";
+  const filteredLogos = isAllFilter
     ? partnerLogos
-    : partnerLogos.filter(logo => logo.industry === activeIndustry);
+    : partnerLogos.filter(logo => {
+        // Map English industry names to Spanish ones if needed
+        if (language === 'en') {
+          const industryMap: Record<string, string> = {
+            'Home': 'Hogar',
+            'Vehicles': 'Vehículos',
+            'Health': 'Salud',
+            'Beauty': 'Belleza'
+          };
+          return logo.industry === industryMap[activeIndustry as keyof typeof industryMap];
+        }
+        return logo.industry === activeIndustry;
+      });
     
   // Function to organize logos into a 2D array: rows and columns
   // Each row has 6 logos (for larger screens), fewer on smaller screens
@@ -235,7 +319,7 @@ const Partners = () => {
   
   // Auto-scroll carousel
   useEffect(() => {
-    if (!showAllLogos) {
+    if (!showAllLogos && totalSlides > 1) {
       const interval = setInterval(() => {
         setCurrentSlide((prev) => (prev + 1) % totalSlides);
       }, 5000);
@@ -269,15 +353,15 @@ const Partners = () => {
     <section id="partners" className="py-16 bg-[#ffffff]">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Empresas que Confían en Nosotros</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('partners.title')}</h2>
           <div className="flex justify-center items-center gap-2 mb-4">
             <div className="bg-[#ff770f]/10 rounded-lg px-4 py-2 inline-flex items-center justify-center">
               <span className="text-3xl font-bold text-[#ff770f]">{companyCount}+</span>
             </div>
-            <span className="text-xl font-medium text-gray-700">Empresas Satisfechas</span>
+            <span className="text-xl font-medium text-gray-700">{t('partners.companies')}</span>
           </div>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Más de 40 empresas líderes en sus industrias ya utilizan Te Ayudo para optimizar sus operaciones y mejorar la experiencia de sus clientes.
+            {t('partners.subtitle')}
           </p>
           <div className="w-24 h-1 bg-[#ff770f] mx-auto mt-4 rounded-full"></div>
         </div>
@@ -287,21 +371,21 @@ const Partners = () => {
           <div className="flex justify-between items-center mb-2">
             <h3 className="text-lg font-semibold flex items-center">
               <Filter className="h-5 w-5 mr-2 text-[#ff770f]" />
-              Filtrar por Industria
+              {t('partners.filter')}
             </h3>
             
             <div className="flex space-x-2 md:hidden">
               <button 
                 onClick={() => scrollFilters('left')}
                 className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
-                aria-label="Desplazar a la izquierda"
+                aria-label={language === 'es' ? "Desplazar a la izquierda" : "Scroll left"}
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
               <button 
                 onClick={() => scrollFilters('right')}
                 className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
-                aria-label="Desplazar a la derecha"
+                aria-label={language === 'es' ? "Desplazar a la derecha" : "Scroll right"}
               >
                 <ChevronRight className="h-5 w-5" />
               </button>
@@ -338,7 +422,7 @@ const Partners = () => {
             onClick={() => setShowAllLogos(!showAllLogos)}
             className="text-sm font-medium text-[#ff770f] bg-[#ff770f]/10 px-4 py-2 rounded-md hover:bg-[#ff770f]/20 transition-colors"
           >
-            {showAllLogos ? "Ver Carrusel" : "Ver Todos"}
+            {showAllLogos ? t('partners.viewCarousel') : t('partners.viewAll')}
           </button>
         </div>
 
@@ -349,17 +433,13 @@ const Partners = () => {
               ref={carouselRef}
               className="overflow-hidden rounded-xl border border-gray-100 shadow-sm bg-white p-6"
             >
-              <div 
-                className="transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-              >
+              <div className="relative" style={{ height: "250px" }}> {/* Fixed height container */}
                 {organizedLogos.map((page, pageIndex) => (
                   <div 
                     key={`page-${pageIndex}`}
-                    className={`absolute w-full transition-opacity duration-300 ${
-                      pageIndex === currentSlide ? "opacity-100" : "opacity-0 pointer-events-none"
+                    className={`absolute top-0 left-0 w-full transition-opacity duration-500 ease-in-out ${
+                      pageIndex === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
                     }`}
-                    style={{ left: `${pageIndex * 100}%` }}
                   >
                     {page.map((row, rowIndex) => (
                       <div 
@@ -396,7 +476,7 @@ const Partners = () => {
                   <button 
                     onClick={goToPrevSlide}
                     className="p-2 rounded-full bg-white shadow-md text-gray-700 hover:text-[#ff770f] transition-colors -ml-3"
-                    aria-label="Anterior"
+                    aria-label={language === 'es' ? "Anterior" : "Previous"}
                   >
                     <ChevronLeft className="h-5 w-5" />
                   </button>
@@ -405,7 +485,7 @@ const Partners = () => {
                   <button 
                     onClick={goToNextSlide}
                     className="p-2 rounded-full bg-white shadow-md text-gray-700 hover:text-[#ff770f] transition-colors -mr-3"
-                    aria-label="Siguiente"
+                    aria-label={language === 'es' ? "Siguiente" : "Next"}
                   >
                     <ChevronRight className="h-5 w-5" />
                   </button>
@@ -453,7 +533,7 @@ const Partners = () => {
 
         {/* Call to action */}
         <div className="text-center mt-12">
-          <p className="text-gray-600 mb-4">¿Quieres ser parte de nuestros clientes satisfechos?</p>
+          <p className="text-gray-600 mb-4">{t('partners.cta')}</p>
           <button
             onClick={() => {
               const contactSection = document.getElementById('contact');
@@ -463,7 +543,7 @@ const Partners = () => {
             }}
             className="inline-flex items-center bg-[#ff770f] text-white px-6 py-3 rounded-md font-medium hover:bg-[#ff770f]/90 transition-colors"
           >
-            Contáctanos Ahora
+            {t('partners.ctaButton')}
           </button>
         </div>
       </div>

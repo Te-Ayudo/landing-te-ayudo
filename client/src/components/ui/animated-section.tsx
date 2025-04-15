@@ -127,10 +127,12 @@ export function AnimatedStaggerItem({
   children: React.ReactNode;
   className?: string;
 }) {
+  // Si props contiene una clave 'key', extraerla para aplicarla directamente
+  const { key, ...restProps } = props;
   const motionProps = {
     variants: fadeInStagger,
     className: cn(className),
-    ...props
+    ...restProps
   } as React.ComponentProps<typeof motion.div>;
   
   return (

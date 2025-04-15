@@ -1,12 +1,84 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
 import { scrollToSection } from "@/lib/utils";
 import teAyudoLogo from "@assets/TE AYUDO Logo-03 (1).png";
+
+// Traducciones locales para el componente Navbar
+const translations = {
+  es: {
+    mission: 'Misión y Visión',
+    roadmap: 'Nuestra Ruta',
+    product: 'Productos',
+    partners: 'Socios',
+    contact: 'Contacto',
+    language: {
+      es: 'Español',
+      en: 'Inglés'
+    }
+  },
+  en: {
+    mission: 'Mission & Vision',
+    roadmap: 'Our Roadmap',
+    product: 'Products',
+    partners: 'Partners',
+    contact: 'Contact',
+    language: {
+      es: 'Spanish',
+      en: 'English'
+    }
+  }
+};
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showLanguageMenu, setShowLanguageMenu] = useState(false);
+  
+  // Estado para el idioma con inicialización desde localStorage
+  const [language, setLanguageState] = useState<'es' | 'en'>(() => {
+    try {
+      const savedLanguage = localStorage.getItem('language') as 'es' | 'en';
+      return (savedLanguage === 'es' || savedLanguage === 'en') ? savedLanguage : 'es';
+    } catch (e) {
+      return 'es';
+    }
+  });
+
+  // Función de traducción simplificada
+  const t = (key: string): string => {
+    try {
+      const parts = key.split('.');
+      if (parts.length === 2 && parts[0] === 'nav') {
+        const currentTranslations = language === 'es' ? translations.es : translations.en;
+        // Para manejar casos especiales como 'nav.language.es'
+        if (parts[1] === 'language.es') {
+          return currentTranslations.language.es;
+        } else if (parts[1] === 'language.en') {
+          return currentTranslations.language.en;
+        }
+        // Convertir el formato "nav.mission" a "mission" para nuestro objeto de traducciones local
+        const simpleKey = parts[1] as keyof typeof translations.es;
+        if (typeof currentTranslations[simpleKey] === 'string') {
+          return currentTranslations[simpleKey] as string;
+        }
+      }
+      return key;
+    } catch (error) {
+      console.error('Translation error', error);
+      return key;
+    }
+  };
+
+  // Función para cambiar el idioma y guardarlo en localStorage
+  const setLanguage = (lang: 'es' | 'en') => {
+    setLanguageState(lang);
+    try {
+      localStorage.setItem('language', lang);
+    } catch (e) {
+      console.error('Error saving language preference', e);
+    }
+  };
 
   // Add scroll event listener to add shadow when scrolled
   useEffect(() => {
@@ -22,6 +94,19 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    // Close language menu when clicking outside
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (!target.closest('#language-menu-container')) {
+        setShowLanguageMenu(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -29,6 +114,16 @@ const Navbar = () => {
   const handleNavLinkClick = (id: string) => {
     scrollToSection(id);
     setIsMenuOpen(false);
+  };
+
+  const toggleLanguageMenu = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setShowLanguageMenu(!showLanguageMenu);
+  };
+
+  const changeLanguage = (lang: 'es' | 'en') => {
+    setLanguage(lang);
+    setShowLanguageMenu(false);
   };
 
   return (
@@ -41,22 +136,68 @@ const Navbar = () => {
           </Link>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-6">
+          <nav className="hidden md:flex space-x-6 items-center">
             <button onClick={() => handleNavLinkClick('mission')} className="text-dark hover:text-[#ff770f] font-medium transition-colors">
-              Misión & Visión
+              {t('nav.mission')}
             </button>
             <button onClick={() => handleNavLinkClick('roadmap')} className="text-dark hover:text-[#ff770f] font-medium transition-colors">
-              Roadmap
+              {t('nav.roadmap')}
             </button>
             <button onClick={() => handleNavLinkClick('product')} className="text-dark hover:text-[#ff770f] font-medium transition-colors">
-              Producto & Precios
+              {t('nav.product')}
             </button>
             <button onClick={() => handleNavLinkClick('partners')} className="text-dark hover:text-[#ff770f] font-medium transition-colors">
-              Clientes
+              {t('nav.partners')}
             </button>
             <button onClick={() => handleNavLinkClick('contact')} className="text-dark hover:text-[#ff770f] font-medium transition-colors">
-              Contacto
+              {t('nav.contact')}
             </button>
+            
+            {/* Language selector */}
+            <div id="language-menu-container" className="relative inline-block text-left">
+              <button
+                type="button"
+                onClick={toggleLanguageMenu}
+                className="flex items-center text-gray-700 hover:text-[#ff770f] font-medium py-2 transition-colors"
+                aria-expanded="true"
+                aria-haspopup="true"
+              >
+                <Globe className="h-5 w-5 mr-1" />
+                <span>{language.toUpperCase()}</span>
+              </button>
+
+              {showLanguageMenu && (
+                <div
+                  className="absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="menu-button"
+                  tabIndex={-1}
+                >
+                  <div className="py-1" role="none">
+                    <button
+                      onClick={() => changeLanguage('es')}
+                      className={`w-full text-left block px-4 py-2 text-sm ${
+                        language === 'es' ? 'bg-gray-100 text-[#ff770f]' : 'text-gray-700 hover:bg-gray-50'
+                      }`}
+                      role="menuitem"
+                    >
+                      {t('nav.language.es')}
+                    </button>
+                    <button
+                      onClick={() => changeLanguage('en')}
+                      className={`w-full text-left block px-4 py-2 text-sm ${
+                        language === 'en' ? 'bg-gray-100 text-[#ff770f]' : 'text-gray-700 hover:bg-gray-50'
+                      }`}
+                      role="menuitem"
+                    >
+                      {t('nav.language.en')}
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+            
             <a href="https://app.teayudo.com.bo/#/login" target="_blank" rel="noopener noreferrer" className="bg-[#ff770f] text-white px-4 py-2 rounded-md font-medium hover:bg-[#ff770f]/90 transition-colors">
               Afiliados
             </a>
@@ -84,32 +225,53 @@ const Navbar = () => {
             onClick={() => handleNavLinkClick('mission')} 
             className="text-dark hover:text-[#ff770f] font-medium py-2 transition-colors text-left"
           >
-            Misión & Visión
+            {t('nav.mission')}
           </button>
           <button 
             onClick={() => handleNavLinkClick('roadmap')} 
             className="text-dark hover:text-[#ff770f] font-medium py-2 transition-colors text-left"
           >
-            Roadmap
+            {t('nav.roadmap')}
           </button>
           <button 
             onClick={() => handleNavLinkClick('product')} 
             className="text-dark hover:text-[#ff770f] font-medium py-2 transition-colors text-left"
           >
-            Producto & Precios
+            {t('nav.product')}
           </button>
           <button 
             onClick={() => handleNavLinkClick('partners')} 
             className="text-dark hover:text-[#ff770f] font-medium py-2 transition-colors text-left"
           >
-            Clientes
+            {t('nav.partners')}
           </button>
           <button 
             onClick={() => handleNavLinkClick('contact')} 
             className="text-dark hover:text-[#ff770f] font-medium py-2 transition-colors text-left"
           >
-            Contacto
+            {t('nav.contact')}
           </button>
+          
+          {/* Language selector for mobile */}
+          <div className="flex items-center py-2">
+            <Globe className="h-5 w-5 mr-2 text-gray-700" />
+            <div className="flex space-x-4">
+              <button 
+                onClick={() => changeLanguage('es')} 
+                className={`text-sm font-medium ${language === 'es' ? 'text-[#ff770f]' : 'text-gray-700'}`}
+              >
+                ESP
+              </button>
+              <span className="text-gray-400">|</span>
+              <button 
+                onClick={() => changeLanguage('en')} 
+                className={`text-sm font-medium ${language === 'en' ? 'text-[#ff770f]' : 'text-gray-700'}`}
+              >
+                ENG
+              </button>
+            </div>
+          </div>
+          
           <a
             href="https://app.teayudo.com.bo/#/login"
             target="_blank"
