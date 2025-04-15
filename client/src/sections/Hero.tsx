@@ -10,7 +10,7 @@ import {
 import { GlassCard, TechGridBackground, GlowingCircle } from "@/components/ui/glass-card";
 import { FuturisticButton } from "@/components/ui/futuristic-button";
 import clientAppImage from "@assets/happy-client.png";
-import { useLanguage } from "@/context/NewLanguageContext";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Hero = () => {
   // Usar el contexto global de idiomas

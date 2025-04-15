@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu, X, Globe } from "lucide-react";
 import { scrollToSection } from "@/lib/utils";
 import teAyudoLogo from "@assets/Post & Imagenes.png";
-import { useLanguage } from "@/context/NewLanguageContext";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

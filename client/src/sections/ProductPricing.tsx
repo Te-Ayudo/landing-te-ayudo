@@ -11,7 +11,7 @@ import {
   PlayCircle
 } from "lucide-react";
 import { scrollToSection } from "@/lib/utils";
-import { useLanguage } from "@/context/NewLanguageContext";
+import { useLanguage } from "@/context/LanguageContext";
 
 // Imágenes reales
 import clientAppImage from "@assets/Post & Imagenes_20250415_134221_0001.png";

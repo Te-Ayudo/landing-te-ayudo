@@ -8,7 +8,7 @@ import {
   Linkedin 
 } from "lucide-react";
 import { scrollToSection } from "@/lib/utils";
-import { useLanguage } from "@/context/NewLanguageContext";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Footer = () => {
   const { t } = useLanguage();
