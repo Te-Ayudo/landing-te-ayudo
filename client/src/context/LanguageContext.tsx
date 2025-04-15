@@ -40,16 +40,16 @@ export const translations = {
     
     // Footer
     'footer.description': 'La plataforma SaaS ERP definitiva para empresas de servicios en LATAM.',
-    'footer.links': 'Enlaces',
-    'footer.mission': 'Misión & Visión',
-    'footer.roadmap': 'Roadmap',
-    'footer.product': 'Producto & Precios',
-    'footer.contact': 'Contacto',
-    'footer.contactInfo': 'Contacto',
-    'footer.followUs': 'Síguenos',
-    'footer.rights': 'Todos los derechos reservados.',
-    'footer.terms': 'Términos y Condiciones',
-    'footer.privacy': 'Política de Privacidad',
+    'footer.links.title': 'Enlaces',
+    'footer.links.mission': 'Misión & Visión',
+    'footer.links.roadmap': 'Roadmap',
+    'footer.links.product': 'Producto & Precios',
+    'footer.links.contact': 'Contacto',
+    'footer.contact.title': 'Contacto',
+    'footer.social.title': 'Síguenos',
+    'footer.copyright': 'Todos los derechos reservados.',
+    'footer.legal.terms': 'Términos y Condiciones',
+    'footer.legal.privacy': 'Política de Privacidad',
     
     // Common
     'common.loading': 'Cargando...',
@@ -92,16 +92,16 @@ export const translations = {
     
     // Footer
     'footer.description': 'The definitive SaaS ERP platform for service companies in LATAM.',
-    'footer.links': 'Links',
-    'footer.mission': 'Mission & Vision',
-    'footer.roadmap': 'Roadmap',
-    'footer.product': 'Product & Pricing',
-    'footer.contact': 'Contact',
-    'footer.contactInfo': 'Contact',
-    'footer.followUs': 'Follow Us',
-    'footer.rights': 'All rights reserved.',
-    'footer.terms': 'Terms & Conditions',
-    'footer.privacy': 'Privacy Policy',
+    'footer.links.title': 'Links',
+    'footer.links.mission': 'Mission & Vision',
+    'footer.links.roadmap': 'Roadmap',
+    'footer.links.product': 'Product & Pricing',
+    'footer.links.contact': 'Contact',
+    'footer.contact.title': 'Contact',
+    'footer.social.title': 'Follow Us',
+    'footer.copyright': 'All rights reserved.',
+    'footer.legal.terms': 'Terms & Conditions',
+    'footer.legal.privacy': 'Privacy Policy',
     
     // Common
     'common.loading': 'Loading...',

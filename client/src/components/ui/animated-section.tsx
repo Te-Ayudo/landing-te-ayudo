@@ -127,8 +127,8 @@ export function AnimatedStaggerItem({
   children: React.ReactNode;
   className?: string;
 }) {
-  // Si props contiene una clave 'key', extraerla para aplicarla directamente
-  const { key, ...restProps } = props;
+  // Preservamos solo las propiedades necesarias sin 'key'
+  const { ...restProps } = props;
   const motionProps = {
     variants: fadeInStagger,
     className: cn(className),
@@ -167,24 +167,23 @@ export function AnimatedTextReveal({
   return (
     <motion.div {...containerProps}>
       {words.map((word, i) => {
-        const wordProps = {
-          key: `word-${i}`,
-          className: "inline-block mr-1",
-          variants: {
-            hidden: { opacity: 0, y: 20 },
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: {
-                duration: 0.5,
-                delay: delay + i * 0.1,
-              }
-            }
-          }
-        } as React.ComponentProps<typeof motion.span>;
-        
+        // Extraemos la key para pasarla directamente y no a través de props spread
         return (
-          <motion.span {...wordProps}>
+          <motion.span 
+            key={`word-${i}`}
+            className="inline-block mr-1"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.5,
+                  delay: delay + i * 0.1,
+                }
+              }
+            }}
+          >
             {word}
           </motion.span>
         );
