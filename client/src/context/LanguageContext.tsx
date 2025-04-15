@@ -6,6 +6,38 @@ export type Language = 'es' | 'en';
 // Textos generales compartidos entre todos los componentes
 export const translations = {
   es: {
+    // Mission & Vision Section
+    'mission.title': 'Misión & Visión',
+    'mission.our_mission': 'Nuestra Misión',
+    'mission.our_mission_text': 'Empoderar a las empresas de servicios en Latinoamérica con tecnología accesible que optimice sus operaciones, mejore la experiencia del cliente y potencie su crecimiento.',
+    'mission.our_vision': 'Nuestra Visión',
+    'mission.our_vision_text': 'Ser la plataforma líder de gestión empresarial en Latinoamérica, transformando la manera en que las empresas de servicios operan en la era digital y generando un impacto positivo en millones de negocios.',
+    'mission.our_values': 'Nuestros Valores',
+    'mission.value.trust': 'Confianza',
+    'mission.value.trust_text': 'Construimos relaciones a largo plazo basadas en la transparencia y honestidad.',
+    'mission.value.innovation': 'Innovación',
+    'mission.value.innovation_text': 'Buscamos constantemente nuevas soluciones y mejoras para nuestros clientes.',
+    'mission.value.community': 'Comunidad',
+    'mission.value.community_text': 'Apoyamos el crecimiento de la economía local y el desarrollo de pequeños negocios.',
+    
+    // Roadmap Section
+    'roadmap.title': 'Nuestro Roadmap',
+    'roadmap.description': 'Te compartimos nuestro camino y los hitos planeados para revolucionar la gestión de negocios de servicios en Latinoamérica.',
+    'roadmap.2024': 'Product-Market Fit',
+    'roadmap.2024.milestone1': 'Lanzamiento de aplicaciones móviles',
+    'roadmap.2024.milestone2': 'Primeros 100 clientes en Bolivia',
+    'roadmap.2025': 'Integración de IA',
+    'roadmap.2025.milestone1': 'Asistente virtual de WhatsApp',
+    'roadmap.2025.milestone2': 'Análisis predictivo de demanda',
+    'roadmap.2026': 'Expansión Regional',
+    'roadmap.2026.milestone1': 'Operaciones en Perú y Colombia',
+    'roadmap.2026.milestone2': '1,000+ empresas activas',
+    'roadmap.2027': 'Ecosistema Completo',
+    'roadmap.2027.milestone1': 'Marketplace de servicios B2B',
+    'roadmap.2027.milestone2': 'Plataforma financiera integrada',
+    'roadmap.2028': 'Estrategia de Salida',
+    'roadmap.2028.milestone1': 'Presencia en 10+ países',
+    'roadmap.2028.milestone2': 'Adquisición potencial',
     // Navbar
     'nav.mission': 'Misión y Visión',
     'nav.roadmap': 'Nuestra Ruta',
@@ -58,6 +90,39 @@ export const translations = {
     'common.affiliate': 'Afiliados',
   },
   en: {
+    // Mission & Vision Section
+    'mission.title': 'Mission & Vision',
+    'mission.our_mission': 'Our Mission',
+    'mission.our_mission_text': 'Empower service companies in Latin America with accessible technology that optimizes their operations, improves customer experience, and enhances their growth.',
+    'mission.our_vision': 'Our Vision',
+    'mission.our_vision_text': 'To be the leading business management platform in Latin America, transforming how service companies operate in the digital era and making a positive impact on millions of businesses.',
+    'mission.our_values': 'Our Values',
+    'mission.value.trust': 'Trust',
+    'mission.value.trust_text': 'We build long-term relationships based on transparency and honesty.',
+    'mission.value.innovation': 'Innovation',
+    'mission.value.innovation_text': 'We constantly seek new solutions and improvements for our customers.',
+    'mission.value.community': 'Community',
+    'mission.value.community_text': 'We support the growth of the local economy and the development of small businesses.',
+    
+    // Roadmap Section
+    'roadmap.title': 'Our Roadmap',
+    'roadmap.description': 'We share our journey and planned milestones to revolutionize service business management in Latin America.',
+    'roadmap.2024': 'Product-Market Fit',
+    'roadmap.2024.milestone1': 'Mobile app launch',
+    'roadmap.2024.milestone2': 'First 100 customers in Bolivia',
+    'roadmap.2025': 'AI Integration',
+    'roadmap.2025.milestone1': 'WhatsApp virtual assistant',
+    'roadmap.2025.milestone2': 'Predictive demand analysis',
+    'roadmap.2026': 'Regional Expansion',
+    'roadmap.2026.milestone1': 'Operations in Peru and Colombia',
+    'roadmap.2026.milestone2': '1,000+ active companies',
+    'roadmap.2027': 'Complete Ecosystem',
+    'roadmap.2027.milestone1': 'B2B services marketplace',
+    'roadmap.2027.milestone2': 'Integrated financial platform',
+    'roadmap.2028': 'Exit Strategy',
+    'roadmap.2028.milestone1': 'Presence in 10+ countries',
+    'roadmap.2028.milestone2': 'Potential acquisition',
+    
     // Navbar
     'nav.mission': 'Mission & Vision',
     'nav.roadmap': 'Our Roadmap',
