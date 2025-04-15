@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect, ReactNode, useMemo } from 'react';
+import React, { createContext, useState, useContext, useEffect, ReactNode, useMemo, useCallback } from 'react';
 
 // Definición de tipos para la traducción
 export type Language = 'es' | 'en';
@@ -314,6 +314,7 @@ export interface LanguageContextProps {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (key: string) => string;
+  _updateTrigger?: number; // Campo para forzar la actualización, opcional
 }
 
 // Creación del contexto con un valor predeterminado
@@ -356,6 +357,9 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
       // Configuramos el atributo lang del documento
       document.documentElement.setAttribute('lang', lang);
       
+      // Forzamos actualización inmediata del contexto
+      forceUpdate();
+      
       // Disparamos múltiples eventos para asegurar la actualización
       window.dispatchEvent(new CustomEvent('language-change', { 
         detail: { language: lang },
@@ -366,6 +370,8 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
       
       // Usar un timeout para asegurar que React tenga tiempo de actualizar el DOM
       setTimeout(() => {
+        // Forzamos nuevamente la actualización después de un pequeño delay
+        forceUpdate();
         window.dispatchEvent(new Event('storage')); // Simula un cambio en localStorage
         window.dispatchEvent(new Event('resize'));
       }, 10);
@@ -410,12 +416,21 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     };
   }, [language]);
 
-  // Value memoizado para evitar renders innecesarios
+  // Añadimos un estado de tiempo para forzar que los componentes se actualicen
+  const [updateTrigger, setUpdateTrigger] = useState(Date.now());
+  
+  // Función para forzar la actualización de todos los componentes que usan el contexto
+  const forceUpdate = useCallback(() => {
+    setUpdateTrigger(Date.now());
+  }, []);
+    
+  // Valor memoizado que incluye el trigger de actualización
   const contextValue = useMemo(() => ({
     language,
     setLanguage,
-    t
-  }), [language, t]);
+    t,
+    _updateTrigger: updateTrigger // Este valor cambiará cada vez que queramos forzar una actualización
+  }), [language, t, updateTrigger]);
 
   return (
     <LanguageContext.Provider value={contextValue}>
