@@ -5,9 +5,9 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
-import { LanguageProvider } from "./context/NewLanguageContext";
+import { LanguageProvider } from "./context/LanguageContext";
 
-// Utilizamos el nuevo LanguageProvider optimizado para cambios de idioma en tiempo real
+// Volvemos al LanguageProvider original que funcionaba correctamente
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
