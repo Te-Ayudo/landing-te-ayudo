@@ -189,7 +189,7 @@ const Hero = () => {
                       <Zap className="w-5 h-5 text-teayudo-orange" />
                     </div>
                     <div>
-                      <p className="text-xs text-gray-500">Eficiencia</p>
+                      <p className="text-xs text-gray-500">{t('hero.stats.efficiency')}</p>
                       <p className="text-lg font-bold text-gray-800">+40%</p>
                     </div>
                   </div>

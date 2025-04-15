@@ -8,8 +8,11 @@ import {
   Linkedin 
 } from "lucide-react";
 import { scrollToSection } from "@/lib/utils";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Footer = () => {
+  const { t } = useLanguage();
+  
   const handleLinkClick = (id: string) => {
     scrollToSection(id);
   };
@@ -21,19 +24,19 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold mb-4">Te Ayudo</h3>
             <p className="text-gray-400">
-              La plataforma SaaS ERP definitiva para empresas de servicios en LATAM.
+              {t('footer.description')}
             </p>
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-4">Enlaces</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('footer.links.title')}</h4>
             <ul className="space-y-2">
               <li>
                 <button 
                   onClick={() => handleLinkClick('mission')} 
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  Misión & Visión
+                  {t('footer.links.mission')}
                 </button>
               </li>
               <li>
@@ -41,7 +44,7 @@ const Footer = () => {
                   onClick={() => handleLinkClick('roadmap')} 
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  Roadmap
+                  {t('footer.links.roadmap')}
                 </button>
               </li>
               <li>
@@ -49,7 +52,7 @@ const Footer = () => {
                   onClick={() => handleLinkClick('product')} 
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  Producto & Precios
+                  {t('footer.links.product')}
                 </button>
               </li>
               <li>
@@ -57,14 +60,14 @@ const Footer = () => {
                   onClick={() => handleLinkClick('contact')} 
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  Contacto
+                  {t('footer.links.contact')}
                 </button>
               </li>
             </ul>
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contacto</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('footer.contact.title')}</h4>
             <ul className="space-y-2">
               <li className="flex items-center">
                 <Phone className="h-5 w-5 text-gray-400 mr-2" />
@@ -78,7 +81,7 @@ const Footer = () => {
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-4">Síguenos</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('footer.social.title')}</h4>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
                 <Twitter className="h-6 w-6" />
@@ -97,13 +100,13 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">&copy; {new Date().getFullYear()} Te Ayudo. Todos los derechos reservados.</p>
+          <p className="text-gray-400 text-sm">&copy; {new Date().getFullYear()} Te Ayudo. {t('footer.copyright')}</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link to="/" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Términos y Condiciones
+              {t('footer.legal.terms')}
             </Link>
             <Link to="/" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Política de Privacidad
+              {t('footer.legal.privacy')}
             </Link>
           </div>
         </div>
