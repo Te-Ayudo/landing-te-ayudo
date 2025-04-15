@@ -1,39 +1,8 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { ChevronLeft, ChevronRight, Filter } from "lucide-react";
 import { useLanguage } from "@/context/NewLanguageContext";
 
-// Mantenemos estas traducciones solo para el manejo de los nombres de industrias
-// El resto de textos se maneja a través del contexto global de idioma
-const translations = {
-  es: {
-    title: 'Empresas que Confían en Nosotros',
-    subtitle: 'Más de 40 empresas líderes en sus industrias ya utilizan Te Ayudo para optimizar sus operaciones y mejorar la experiencia de sus clientes.',
-    companies: 'Empresas Satisfechas',
-    filter: 'Filtrar por Industria',
-    viewAll: 'Ver Todos',
-    viewCarousel: 'Ver Carrusel',
-    cta: '¿Quieres ser parte de nuestros clientes satisfechos?',
-    ctaButton: 'Contáctanos Ahora',
-    previous: 'Anterior',
-    next: 'Siguiente',
-    scrollLeft: 'Desplazar a la izquierda',
-    scrollRight: 'Desplazar a la derecha'
-  },
-  en: {
-    title: 'Companies that Trust Us',
-    subtitle: 'More than 40 leading companies in their industries already use Te Ayudo to optimize their operations and improve their customer experience.',
-    companies: 'Satisfied Companies',
-    filter: 'Filter by Industry',
-    viewAll: 'View All',
-    viewCarousel: 'View Carousel',
-    cta: 'Want to be part of our satisfied customers?',
-    ctaButton: 'Contact Us Now',
-    previous: 'Previous',
-    next: 'Next',
-    scrollLeft: 'Scroll left',
-    scrollRight: 'Scroll right'
-  }
-};
+// Ya no necesitamos estas traducciones locales, usaremos el contexto global de idioma
 
 // Company logos data
 const partnerLogos = [

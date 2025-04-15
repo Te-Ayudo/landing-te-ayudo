@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/context/NewLanguageContext";
 
 const Roadmap = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { t } = useLanguage();
+  const { t, language, _updateTrigger } = useLanguage();
   
-  // Timeline data con traducciones
-  const timelineItems = [
+  // Timeline data con traducciones - Ahora usando useMemo para recalcular cuando cambia el idioma
+  const timelineItems = useMemo(() => [
     {
       year: "2024",
       title: t('roadmap.2024'),
@@ -54,7 +54,7 @@ const Roadmap = () => {
         t('roadmap.2028.milestone2')
       ]
     }
-  ];
+  ], [t, language, _updateTrigger]); // Dependencias que provocarán el recálculo
 
   useEffect(() => {
     const handleScroll = () => {
