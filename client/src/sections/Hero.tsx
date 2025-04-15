@@ -10,8 +10,11 @@ import {
 import { GlassCard, TechGridBackground, GlowingCircle } from "@/components/ui/glass-card";
 import { FuturisticButton } from "@/components/ui/futuristic-button";
 import clientAppImage from "@assets/Post & Imagenes_20250415_134221_0001.png";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Hero = () => {
+  // Usar el contexto global de idiomas
+  const { t } = useLanguage();
   return (
     <section className="pt-32 pb-16 bg-gradient-to-b from-white via-teayudo-orange-light/30 to-white relative overflow-hidden">
       {/* Tech background grid */}
@@ -40,7 +43,7 @@ const Hero = () => {
           <AnimatedSection className="md:w-1/2 mb-10 md:mb-0 relative">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
               <span className="relative">
-                <AnimatedTextReveal text="El ERP definitivo para" />
+                <AnimatedTextReveal text={t('hero.title')} />
                 <motion.div 
                   className="absolute -bottom-2 left-0 h-1 bg-teayudo-orange"
                   initial={{ width: 0 }}
@@ -55,7 +58,7 @@ const Hero = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.5, duration: 0.6 }}
                 >
-                  empresas de servicios
+                  {t('hero.subtitle')}
                 </motion.span>
               </span>
             </h1>
@@ -66,7 +69,7 @@ const Hero = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 2, duration: 0.8 }}
             >
-              La plataforma SaaS integral para gestionar todos los aspectos de tu negocio de servicios en LATAM.
+              {t('hero.description')}
             </motion.p>
             
             <motion.div 
@@ -82,7 +85,7 @@ const Hero = () => {
                 showArrow
                 onClick={() => scrollToSection('product')}
               >
-                Ver Producto
+                {t('hero.cta.product')}
               </FuturisticButton>
               
               <FuturisticButton
@@ -91,7 +94,7 @@ const Hero = () => {
                 animation="pulse"
                 onClick={() => scrollToSection('contact')}
               >
-                Contáctanos
+                {t('hero.cta.contact')}
               </FuturisticButton>
             </motion.div>
             
@@ -100,28 +103,28 @@ const Hero = () => {
               <AnimatedStaggerItem>
                 <div className="flex items-center gap-2 text-sm text-gray-600">
                   <Zap className="h-4 w-4 text-teayudo-orange" />
-                  <span>Automatización Inteligente</span>
+                  <span>{t('hero.feature.automation')}</span>
                 </div>
               </AnimatedStaggerItem>
               
               <AnimatedStaggerItem>
                 <div className="flex items-center gap-2 text-sm text-gray-600">
                   <Sparkles className="h-4 w-4 text-teayudo-blue" />
-                  <span>IA Predictiva</span>
+                  <span>{t('hero.feature.ai')}</span>
                 </div>
               </AnimatedStaggerItem>
               
               <AnimatedStaggerItem>
                 <div className="flex items-center gap-2 text-sm text-gray-600">
                   <Users className="h-4 w-4 text-teayudo-orange" />
-                  <span>Gestión de Clientes</span>
+                  <span>{t('hero.feature.customers')}</span>
                 </div>
               </AnimatedStaggerItem>
               
               <AnimatedStaggerItem>
                 <div className="flex items-center gap-2 text-sm text-gray-600">
                   <Layers className="h-4 w-4 text-teayudo-blue" />
-                  <span>Análisis en Tiempo Real</span>
+                  <span>{t('hero.feature.analytics')}</span>
                 </div>
               </AnimatedStaggerItem>
             </AnimatedStaggerContainer>
@@ -140,7 +143,7 @@ const Hero = () => {
               >
                 <img 
                   src={clientAppImage} 
-                  alt="Aplicación para clientes Te Ayudo" 
+                  alt={t('hero.title') + " " + t('hero.subtitle')} 
                   className="rounded-lg w-full h-auto object-contain"
                 />
                 
@@ -164,7 +167,7 @@ const Hero = () => {
                       <Users className="w-5 h-5 text-teayudo-blue" />
                     </div>
                     <div>
-                      <p className="text-xs text-gray-500">Usuarios activos</p>
+                      <p className="text-xs text-gray-500">{t('hero.stats.users')}</p>
                       <p className="text-lg font-bold text-gray-800">120,000+</p>
                     </div>
                   </div>
