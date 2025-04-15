@@ -3,89 +3,279 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Company logos data
 const partnerLogos = [
+  // Salud
   {
-    name: "Empresa 1",
-    logo: "https://img.icons8.com/color/96/000000/company.png",
+    name: "Hospital Premier",
+    logo: "https://img.icons8.com/fluency/96/000000/hospital-3.png",
     industry: "Salud"
   },
   {
-    name: "Empresa 2",
-    logo: "https://img.icons8.com/color/96/000000/company.png", 
+    name: "Clínica Vitalidad",
+    logo: "https://img.icons8.com/fluency/96/000000/clinic.png",
+    industry: "Salud"
+  },
+  {
+    name: "Dental Sonrisa",
+    logo: "https://img.icons8.com/fluency/96/000000/tooth.png",
+    industry: "Salud"
+  },
+  {
+    name: "Fisiocentro",
+    logo: "https://img.icons8.com/fluency/96/000000/physical-therapy.png",
+    industry: "Salud"
+  },
+  {
+    name: "Laboratorio Análisis",
+    logo: "https://img.icons8.com/fluency/96/000000/test-tube.png",
+    industry: "Salud"
+  },
+  
+  // Tecnología
+  {
+    name: "TechSolutions",
+    logo: "https://img.icons8.com/fluency/96/000000/cloud-computing.png", 
     industry: "Tecnología"
   },
   {
-    name: "Empresa 3",
-    logo: "https://img.icons8.com/color/96/000000/company.png",
+    name: "DataCore",
+    logo: "https://img.icons8.com/fluency/96/000000/database.png", 
+    industry: "Tecnología"
+  },
+  {
+    name: "InnovaTech",
+    logo: "https://img.icons8.com/fluency/96/000000/circuit.png", 
+    industry: "Tecnología"
+  },
+  {
+    name: "DigitalWave",
+    logo: "https://img.icons8.com/fluency/96/000000/code.png", 
+    industry: "Tecnología"
+  },
+  {
+    name: "BrainByte",
+    logo: "https://img.icons8.com/fluency/96/000000/neural-connections.png", 
+    industry: "Tecnología"
+  },
+  
+  // Financiero
+  {
+    name: "Capital Finance",
+    logo: "https://img.icons8.com/fluency/96/000000/bank-building.png",
     industry: "Financiero"
   },
   {
-    name: "Empresa 4",
-    logo: "https://img.icons8.com/color/96/000000/company.png",
+    name: "InverGroup",
+    logo: "https://img.icons8.com/fluency/96/000000/money-bag.png",
+    industry: "Financiero"
+  },
+  {
+    name: "Crédito Amigo",
+    logo: "https://img.icons8.com/fluency/96/000000/card-in-use.png",
+    industry: "Financiero"
+  },
+  {
+    name: "Aseguradora Nacional",
+    logo: "https://img.icons8.com/fluency/96/000000/shield.png",
+    industry: "Financiero"
+  },
+  {
+    name: "Planifica Futuro",
+    logo: "https://img.icons8.com/fluency/96/000000/stocks-growth.png",
+    industry: "Financiero"
+  },
+  
+  // Retail
+  {
+    name: "MegaStore",
+    logo: "https://img.icons8.com/fluency/96/000000/shop.png",
     industry: "Retail"
   },
   {
-    name: "Empresa 5",
-    logo: "https://img.icons8.com/color/96/000000/company.png",
+    name: "Fashion Express",
+    logo: "https://img.icons8.com/fluency/96/000000/t-shirt.png",
+    industry: "Retail"
+  },
+  {
+    name: "Electronics Pro",
+    logo: "https://img.icons8.com/fluency/96/000000/smartphone-tablet.png",
+    industry: "Retail"
+  },
+  {
+    name: "Home & Decor",
+    logo: "https://img.icons8.com/fluency/96/000000/furniture.png",
+    industry: "Retail"
+  },
+  {
+    name: "SuperMarket Plus",
+    logo: "https://img.icons8.com/fluency/96/000000/shopping-cart.png",
+    industry: "Retail"
+  },
+  
+  // Educación
+  {
+    name: "Instituto Avanzado",
+    logo: "https://img.icons8.com/fluency/96/000000/graduation-cap.png",
     industry: "Educación"
   },
   {
-    name: "Empresa 6",
-    logo: "https://img.icons8.com/color/96/000000/company.png",
+    name: "Colegio Futuro",
+    logo: "https://img.icons8.com/fluency/96/000000/school-building.png",
+    industry: "Educación"
+  },
+  {
+    name: "Centro de Idiomas",
+    logo: "https://img.icons8.com/fluency/96/000000/language.png",
+    industry: "Educación"
+  },
+  {
+    name: "Academia Tech",
+    logo: "https://img.icons8.com/fluency/96/000000/laptop-coding.png",
+    industry: "Educación"
+  },
+  {
+    name: "Escuela de Artes",
+    logo: "https://img.icons8.com/fluency/96/000000/paint-palette.png",
+    industry: "Educación"
+  },
+  
+  // Hospitalidad
+  {
+    name: "Hotel Estrella",
+    logo: "https://img.icons8.com/fluency/96/000000/hotel-building.png",
     industry: "Hospitalidad"
   },
   {
-    name: "Empresa 7",
-    logo: "https://img.icons8.com/color/96/000000/company.png",
+    name: "Restaurante Sabor",
+    logo: "https://img.icons8.com/fluency/96/000000/restaurant.png",
+    industry: "Hospitalidad"
+  },
+  {
+    name: "Café Aroma",
+    logo: "https://img.icons8.com/fluency/96/000000/coffee-cup.png",
+    industry: "Hospitalidad"
+  },
+  {
+    name: "Resort Paradise",
+    logo: "https://img.icons8.com/fluency/96/000000/palm-tree.png",
+    industry: "Hospitalidad"
+  },
+  {
+    name: "Event Center",
+    logo: "https://img.icons8.com/fluency/96/000000/confetti.png",
+    industry: "Hospitalidad"
+  },
+  
+  // Marketing
+  {
+    name: "CreativeMarketing",
+    logo: "https://img.icons8.com/fluency/96/000000/idea.png",
     industry: "Marketing"
   },
   {
-    name: "Empresa 8",
-    logo: "https://img.icons8.com/color/96/000000/company.png",
+    name: "Digital Growth",
+    logo: "https://img.icons8.com/fluency/96/000000/line-chart.png",
+    industry: "Marketing"
+  },
+  {
+    name: "Social Impact",
+    logo: "https://img.icons8.com/fluency/96/000000/like.png",
+    industry: "Marketing"
+  },
+  {
+    name: "BrandBuilders",
+    logo: "https://img.icons8.com/fluency/96/000000/diversity.png",
+    industry: "Marketing"
+  },
+  {
+    name: "ContentCreators",
+    logo: "https://img.icons8.com/fluency/96/000000/video.png",
+    industry: "Marketing"
+  },
+  
+  // Consultoría
+  {
+    name: "Asesores Inc",
+    logo: "https://img.icons8.com/fluency/96/000000/businessman.png",
     industry: "Consultoría"
   },
   {
-    name: "Empresa 9",
-    logo: "https://img.icons8.com/color/96/000000/company.png",
+    name: "Business Pro",
+    logo: "https://img.icons8.com/fluency/96/000000/briefcase.png",
+    industry: "Consultoría"
+  },
+  {
+    name: "Legal Solutions",
+    logo: "https://img.icons8.com/fluency/96/000000/scales.png",
+    industry: "Consultoría"
+  },
+  {
+    name: "Tax Advisors",
+    logo: "https://img.icons8.com/fluency/96/000000/tax.png",
+    industry: "Consultoría"
+  },
+  {
+    name: "Coaching Executive",
+    logo: "https://img.icons8.com/fluency/96/000000/conference-call.png",
+    industry: "Consultoría"
+  },
+  
+  // Inmobiliaria
+  {
+    name: "Propiedades Top",
+    logo: "https://img.icons8.com/fluency/96/000000/cottage.png",
     industry: "Inmobiliaria"
   },
   {
-    name: "Empresa 10",
-    logo: "https://img.icons8.com/color/96/000000/company.png",
-    industry: "Turismo"
+    name: "Urban Homes",
+    logo: "https://img.icons8.com/fluency/96/000000/city.png",
+    industry: "Inmobiliaria"
   },
   {
-    name: "Empresa 11",
-    logo: "https://img.icons8.com/color/96/000000/company.png",
-    industry: "Automotriz"
+    name: "Construye Futuro",
+    logo: "https://img.icons8.com/fluency/96/000000/crane.png",
+    industry: "Inmobiliaria"
   },
   {
-    name: "Empresa 12",
-    logo: "https://img.icons8.com/color/96/000000/company.png",
-    industry: "Logística"
+    name: "Bienes Raíces Plus",
+    logo: "https://img.icons8.com/fluency/96/000000/building.png",
+    industry: "Inmobiliaria"
   }
 ];
 
 // Industries with colors for filtering
 const industries = [
-  { name: "Todos", color: "#6c757d" },
-  { name: "Salud", color: "#198754" },
-  { name: "Tecnología", color: "#0d6efd" },
-  { name: "Financiero", color: "#fd7e14" },
-  { name: "Retail", color: "#dc3545" },
-  { name: "Educación", color: "#6f42c1" },
-  { name: "Hospitalidad", color: "#20c997" },
-  { name: "Marketing", color: "#0dcaf0" },
-  { name: "Consultoría", color: "#adb5bd" },
-  { name: "Inmobiliaria", color: "#fd7e14" },
-  { name: "Turismo", color: "#6610f2" },
-  { name: "Automotriz", color: "#d63384" },
-  { name: "Logística", color: "#ffc107" }
+  { name: "Todos", color: "#ff770f" },
+  { name: "Salud", color: "#5ccdcc" },
+  { name: "Tecnología", color: "#ff770f" },
+  { name: "Financiero", color: "#5ccdcc" },
+  { name: "Retail", color: "#ff770f" },
+  { name: "Educación", color: "#5ccdcc" },
+  { name: "Hospitalidad", color: "#ff770f" },
+  { name: "Marketing", color: "#5ccdcc" },
+  { name: "Consultoría", color: "#ff770f" },
+  { name: "Inmobiliaria", color: "#5ccdcc" }
 ];
 
 const Partners = () => {
   const [activeIndustry, setActiveIndustry] = useState("Todos");
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [companyCount, setCompanyCount] = useState(0);
   const sliderRef = useRef<HTMLDivElement>(null);
+  
+  // Animate the company count
+  useEffect(() => {
+    const totalCompanies = 40;
+    const duration = 2000; // 2 seconds
+    const increment = Math.ceil(totalCompanies / (duration / 50)); // Update every 50ms
+    
+    if (companyCount < totalCompanies) {
+      const timer = setTimeout(() => {
+        setCompanyCount(prev => Math.min(prev + increment, totalCompanies));
+      }, 50);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [companyCount]);
 
   // Filter logos based on selected industry
   const filteredLogos = activeIndustry === "Todos"
@@ -131,6 +321,12 @@ const Partners = () => {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Empresas que Confían en Nosotros</h2>
+          <div className="flex justify-center items-center gap-2 mb-4">
+            <div className="bg-[#ff770f]/10 rounded-lg px-4 py-2 inline-flex items-center justify-center">
+              <span className="text-3xl font-bold text-[#ff770f]">{companyCount}+</span>
+            </div>
+            <span className="text-xl font-medium text-gray-700">Empresas Satisfechas</span>
+          </div>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Más de 40 empresas líderes en sus industrias ya utilizan Te Ayudo para optimizar sus operaciones y mejorar la experiencia de sus clientes.
           </p>
@@ -189,15 +385,17 @@ const Partners = () => {
           {filteredLogos.map((partner, index) => (
             <div
               key={`${partner.name}-${index}`}
-              className="flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+              className="flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-all hover:border-[#ff770f]/30 hover:scale-105 group cursor-pointer"
             >
-              <img
-                src={partner.logo}
-                alt={`Logo de ${partner.name}`}
-                className="h-16 w-16 object-contain mb-2"
-              />
-              <span className="text-sm font-medium text-center">{partner.name}</span>
-              <span className="text-xs text-gray-500">{partner.industry}</span>
+              <div className="bg-gray-50 p-3 rounded-full mb-3 group-hover:bg-[#fff8f0] transition-colors">
+                <img
+                  src={partner.logo}
+                  alt={`Logo de ${partner.name}`}
+                  className="h-14 w-14 object-contain"
+                />
+              </div>
+              <span className="text-sm font-medium text-center group-hover:text-[#ff770f] transition-colors">{partner.name}</span>
+              <span className="text-xs text-gray-500 mt-1">{partner.industry}</span>
             </div>
           ))}
         </div>
