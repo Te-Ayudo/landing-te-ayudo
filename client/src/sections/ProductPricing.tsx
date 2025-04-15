@@ -12,6 +12,12 @@ import {
 } from "lucide-react";
 import { scrollToSection } from "@/lib/utils";
 
+// Imágenes reales
+import clientAppImage from "@assets/Post & Imagenes_20250415_134221_0001.png";
+import employeeAppImage from "@assets/Post & Imagenes_20250415_134221_0002.png";
+import saasImage from "@assets/Post & Imagenes_20250415_134221_0003.png";
+import landingImage from "@assets/Post & Imagenes_20250415_135616_0000.png";
+
 // Pricing plans data
 const pricingPlans = [
   {
@@ -122,9 +128,9 @@ const ProductPricing = () => {
                   </p>
                   <div className="aspect-w-16 aspect-h-9 bg-gray-100 rounded-lg overflow-hidden mb-4">
                     <img 
-                      src="https://images.unsplash.com/photo-1517705600644-a016b9dcadef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                      src={clientAppImage} 
                       alt="Te Ayudo App para Clientes" 
-                      className="object-cover w-full h-full"
+                      className="object-contain w-full h-full"
                     />
                   </div>
                   <ul className="space-y-2">

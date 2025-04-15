@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/animated-section";
 import { GlassCard, TechGridBackground, GlowingCircle } from "@/components/ui/glass-card";
 import { FuturisticButton } from "@/components/ui/futuristic-button";
+import clientAppImage from "@assets/Post & Imagenes_20250415_134221_0001.png";
 
 const Hero = () => {
   return (
@@ -138,9 +139,9 @@ const Hero = () => {
                 transition={{ duration: 0.7 }}
               >
                 <img 
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                  alt="Equipo usando Te Ayudo" 
-                  className="rounded-lg w-full h-auto object-cover"
+                  src={clientAppImage} 
+                  alt="Aplicación para clientes Te Ayudo" 
+                  className="rounded-lg w-full h-auto object-contain"
                 />
                 
                 {/* Floating accent elements */}
