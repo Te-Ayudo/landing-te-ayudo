@@ -156,6 +156,7 @@ export function AnimatedTextReveal({
 }) {
   const words = text.split(" ");
   
+  // Aseguramos que no pasamos el key a través de props spread
   const containerProps = {
     initial: "hidden",
     whileInView: "visible",
