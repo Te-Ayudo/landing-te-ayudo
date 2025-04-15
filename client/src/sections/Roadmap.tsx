@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 // Timeline data
 const timelineItems = [
   {
-    year: "2023",
+    year: "2024",
     title: "Product-Market Fit",
     color: "primary",
     milestones: [
@@ -14,7 +14,7 @@ const timelineItems = [
     ]
   },
   {
-    year: "2024",
+    year: "2025",
     title: "Integración de IA",
     color: "secondary",
     milestones: [
@@ -23,7 +23,7 @@ const timelineItems = [
     ]
   },
   {
-    year: "2025",
+    year: "2026",
     title: "Expansión Regional",
     color: "primary",
     milestones: [
@@ -32,7 +32,7 @@ const timelineItems = [
     ]
   },
   {
-    year: "2026",
+    year: "2027",
     title: "Ecosistema Completo",
     color: "secondary",
     milestones: [
@@ -41,7 +41,7 @@ const timelineItems = [
     ]
   },
   {
-    year: "2027",
+    year: "2028",
     title: "Estrategia de Salida",
     color: "primary",
     milestones: [
@@ -74,7 +74,7 @@ const Roadmap = () => {
   }, []);
 
   return (
-    <section id="roadmap" className="py-16 bg-gray-50">
+    <section id="roadmap" className="py-16 bg-[#ffffff]">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Nuestro Roadmap</h2>

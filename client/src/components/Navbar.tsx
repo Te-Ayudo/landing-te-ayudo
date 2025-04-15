@@ -40,7 +40,7 @@ const Navbar = () => {
           </Link>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-6">
             <button onClick={() => handleNavLinkClick('mission')} className="text-dark hover:text-[#ff770f] font-medium transition-colors">
               Misión & Visión
             </button>
@@ -49,6 +49,9 @@ const Navbar = () => {
             </button>
             <button onClick={() => handleNavLinkClick('product')} className="text-dark hover:text-[#ff770f] font-medium transition-colors">
               Producto & Precios
+            </button>
+            <button onClick={() => handleNavLinkClick('partners')} className="text-dark hover:text-[#ff770f] font-medium transition-colors">
+              Clientes
             </button>
             <button onClick={() => handleNavLinkClick('contact')} className="text-dark hover:text-[#ff770f] font-medium transition-colors">
               Contacto
@@ -93,6 +96,12 @@ const Navbar = () => {
             className="text-dark hover:text-[#ff770f] font-medium py-2 transition-colors text-left"
           >
             Producto & Precios
+          </button>
+          <button 
+            onClick={() => handleNavLinkClick('partners')} 
+            className="text-dark hover:text-[#ff770f] font-medium py-2 transition-colors text-left"
+          >
+            Clientes
           </button>
           <button 
             onClick={() => handleNavLinkClick('contact')} 

@@ -2,7 +2,7 @@ import { Zap, Globe, Users, CheckCircle2, Shield, Lightbulb } from "lucide-react
 
 const MissionVision = () => {
   return (
-    <section id="mission" className="py-16 bg-white">
+    <section id="mission" className="py-16 bg-[#ffffff]">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Misión & Visión</h2>
@@ -10,8 +10,8 @@ const MissionVision = () => {
         </div>
         
         <div className="grid md:grid-cols-2 gap-10">
-          <div className="bg-white p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-            <div className="mb-4 bg-[#ffeeda] inline-block p-3 rounded-full">
+          <div className="bg-[#ffffff] p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
+            <div className="mb-4 bg-[#fff8f0] inline-block p-3 rounded-full">
               <Zap className="h-8 w-8 text-[#ff770f]" />
             </div>
             <h3 className="text-2xl font-semibold mb-4">Nuestra Misión</h3>
@@ -20,8 +20,8 @@ const MissionVision = () => {
             </p>
           </div>
           
-          <div className="bg-white p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-            <div className="mb-4 bg-[#ffeeda] inline-block p-3 rounded-full">
+          <div className="bg-[#ffffff] p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
+            <div className="mb-4 bg-[#fff8f0] inline-block p-3 rounded-full">
               <Globe className="h-8 w-8 text-[#ff770f]" />
             </div>
             <h3 className="text-2xl font-semibold mb-4">Nuestra Visión</h3>

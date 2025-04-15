@@ -72,7 +72,7 @@ const ProductPricing = () => {
   const [activeTab, setActiveTab] = useState<"mobile" | "platform">("mobile");
 
   return (
-    <section id="product" className="py-16 bg-white">
+    <section id="product" className="py-16 bg-[#ffffff]">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Producto & Precios</h2>

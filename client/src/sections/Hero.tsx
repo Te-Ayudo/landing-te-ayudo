@@ -2,7 +2,7 @@ import { scrollToSection } from "@/lib/utils";
 
 const Hero = () => {
   return (
-    <section className="pt-28 pb-16 bg-gradient-to-b from-[#ffeeda] to-white">
+    <section className="pt-28 pb-16 bg-gradient-to-b from-[#fff8f0] to-white">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 mb-10 md:mb-0">
@@ -21,7 +21,7 @@ const Hero = () => {
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="bg-white border-2 border-[#ff770f] text-[#ff770f] px-6 py-3 rounded-md font-medium hover:bg-[#ffeeda] transition-colors text-center"
+                className="bg-white border-2 border-[#ff770f] text-[#ff770f] px-6 py-3 rounded-md font-medium hover:bg-[#fff8f0] transition-colors text-center"
               >
                 Contáctanos
               </button>
