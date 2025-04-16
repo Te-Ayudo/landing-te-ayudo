@@ -299,17 +299,35 @@ const ProductPricing = () => {
           
           {/* Desktop Pricing Table */}
           <div className="hidden md:block overflow-x-auto">
-            <div className="min-w-full shadow-lg rounded-xl overflow-hidden">
+            <motion.div 
+              className="min-w-full shadow-lg rounded-xl overflow-hidden"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+            >
               <table className="min-w-full bg-white">
                 <thead>
                   <tr className="bg-gray-50">
-                    <th className="py-4 px-6 text-left font-semibold text-gray-700 border-b">Características</th>
+                    <motion.th 
+                      className="py-4 px-6 text-left font-semibold text-gray-700 border-b"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: 0.2 }}
+                    >
+                      Características
+                    </motion.th>
                     {pricingPlans.map((plan, index) => (
-                      <th key={plan.name} className="py-4 px-6 text-center font-semibold text-gray-700 border-b">
+                      <motion.th 
+                        key={plan.name} 
+                        className="py-4 px-6 text-center font-semibold text-gray-700 border-b"
+                        initial={{ opacity: 0, y: -30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.7, delay: 0.3 + index * 0.2 }}
+                      >
                         <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.5, delay: index * 0.1 }}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ duration: 0.5, delay: 0.5 + index * 0.2 }}
                         >
                           <span className="block text-lg">{plan.name}</span>
                           <motion.span 
@@ -336,7 +354,7 @@ const ProductPricing = () => {
                             </motion.span>
                           )}
                         </motion.div>
-                      </th>
+                      </motion.th>
                     ))}
                   </tr>
                 </thead>
@@ -445,7 +463,7 @@ const ProductPricing = () => {
                   </tr>
                 </tbody>
               </table>
-            </div>
+            </motion.div>
           </div>
           
           {/* Mobile Pricing Cards */}
