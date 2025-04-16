@@ -453,7 +453,8 @@ const ProductPricing = () => {
             <div>
               {pricingPlans.map((plan, index) => (
                   <motion.div 
-                    className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100"
+                    key={`plan-mobile-${plan.name}`}
+                    className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 mb-6"
                     whileHover={{ 
                       y: -5, 
                       boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)"
@@ -570,40 +571,105 @@ const ProductPricing = () => {
           </div>
           
           {/* Add-ons Section */}
-          <div className="mt-12">
+          <motion.div 
+            className="mt-12"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
             <h4 className="text-xl font-semibold mb-4 text-center">{t('product.addons.title') || 'Extras'}</h4>
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
+              <motion.div 
+                className="bg-white rounded-lg shadow-sm p-6 border border-gray-100"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                whileHover={{ 
+                  y: -5, 
+                  boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)"
+                }}
+              >
                 <div className="flex items-center mb-3">
-                  <MessageSquare className="h-6 w-6 text-green-500 mr-2" />
+                  <motion.div
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                  >
+                    <MessageSquare className="h-6 w-6 text-green-500 mr-2" />
+                  </motion.div>
                   <h5 className="font-medium">{t('product.addons.whatsapp.title') || 'WhatsApp Ilimitado'}</h5>
                 </div>
-                <p className="text-sm text-gray-600">
+                <motion.p 
+                  className="text-sm text-gray-600"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                >
                   {t('product.addons.whatsapp.description') || 'Envía mensajes ilimitados a tus clientes desde la plataforma.'}
-                </p>
-              </div>
+                </motion.p>
+              </motion.div>
               
-              <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
+              <motion.div 
+                className="bg-white rounded-lg shadow-sm p-6 border border-gray-100"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                whileHover={{ 
+                  y: -5, 
+                  boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)"
+                }}
+              >
                 <div className="flex items-center mb-3">
-                  <Lightbulb className="h-6 w-6 text-blue-500 mr-2" />
+                  <motion.div
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.6 }}
+                  >
+                    <Lightbulb className="h-6 w-6 text-blue-500 mr-2" />
+                  </motion.div>
                   <h5 className="font-medium">{t('product.addons.ai.title') || 'IA en WhatsApp'}</h5>
                 </div>
-                <p className="text-sm text-gray-600">
+                <motion.p 
+                  className="text-sm text-gray-600"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.7 }}
+                >
                   {t('product.addons.ai.description') || 'Asistente virtual con IA para responder consultas de tus clientes.'}
-                </p>
-              </div>
+                </motion.p>
+              </motion.div>
               
-              <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
+              <motion.div 
+                className="bg-white rounded-lg shadow-sm p-6 border border-gray-100"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.7 }}
+                whileHover={{ 
+                  y: -5, 
+                  boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)"
+                }}
+              >
                 <div className="flex items-center mb-3">
-                  <ClipboardList className="h-6 w-6 text-purple-500 mr-2" />
+                  <motion.div
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.8 }}
+                  >
+                    <ClipboardList className="h-6 w-6 text-purple-500 mr-2" />
+                  </motion.div>
                   <h5 className="font-medium">{t('product.addons.billing.title') || 'Sistema de Facturación'}</h5>
                 </div>
-                <p className="text-sm text-gray-600">
+                <motion.p 
+                  className="text-sm text-gray-600"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.9 }}
+                >
                   {t('product.addons.billing.description') || 'Genera facturas electrónicas y gestiona impuestos automáticamente.'}
-                </p>
-              </div>
+                </motion.p>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
