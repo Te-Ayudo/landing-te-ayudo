@@ -72,6 +72,13 @@ const translations = {
     'product.pricing.feature.promotions': 'Módulo de Promociones',
     'product.pricing.action': 'Comenzar',
     'product.pricing.contact': 'Contáctanos',
+    'product.addons.title': 'Extras',
+    'product.addons.whatsapp.title': 'WhatsApp Ilimitado',
+    'product.addons.whatsapp.description': 'Envía mensajes ilimitados a tus clientes desde la plataforma.',
+    'product.addons.ai.title': 'IA en WhatsApp',
+    'product.addons.ai.description': 'Asistente virtual con IA para responder consultas de tus clientes.',
+    'product.addons.billing.title': 'Sistema de Facturación',
+    'product.addons.billing.description': 'Genera facturas electrónicas y gestiona impuestos automáticamente.',
     
     // Partners
     'partners.title': 'Empresas que Confían en Nosotros',
