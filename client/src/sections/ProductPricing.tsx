@@ -7,11 +7,11 @@ import {
   X, 
   MessageSquare, 
   Lightbulb,
-  ClipboardList,
-  PlayCircle
+  ClipboardList
 } from "lucide-react";
 import { scrollToSection } from "@/lib/utils";
 import { useLanguage } from "@/context/LanguageContext";
+import { motion } from "framer-motion";
 
 // Imágenes reales
 import clientAppImage from "@assets/Post & Imagenes_20250415_134221_0001.png";
@@ -304,11 +304,38 @@ const ProductPricing = () => {
                 <thead>
                   <tr className="bg-gray-50">
                     <th className="py-4 px-6 text-left font-semibold text-gray-700 border-b">Características</th>
-                    {pricingPlans.map((plan) => (
+                    {pricingPlans.map((plan, index) => (
                       <th key={plan.name} className="py-4 px-6 text-center font-semibold text-gray-700 border-b">
-                        <span className="block text-lg">{plan.name}</span>
-                        <span className="text-[#ff770f] font-bold text-xl mt-1 block">{plan.price}</span>
-                        {plan.description && <span className="text-gray-500 text-xs block">{plan.description}</span>}
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.5, delay: index * 0.1 }}
+                        >
+                          <span className="block text-lg">{plan.name}</span>
+                          <motion.span 
+                            className="text-[#ff770f] font-bold text-xl mt-1 block"
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ 
+                              duration: 0.5, 
+                              delay: 0.3 + index * 0.1,
+                              type: "spring",
+                              stiffness: 300
+                            }}
+                          >
+                            {plan.price}
+                          </motion.span>
+                          {plan.description && (
+                            <motion.span 
+                              className="text-gray-500 text-xs block"
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
+                            >
+                              {plan.description}
+                            </motion.span>
+                          )}
+                        </motion.div>
                       </th>
                     ))}
                   </tr>
@@ -423,71 +450,123 @@ const ProductPricing = () => {
           
           {/* Mobile Pricing Cards */}
           <div className="md:hidden space-y-6">
-            {pricingPlans.map((plan) => (
-              <div key={plan.name} className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
-                <div className="bg-[#ff770f]/10 p-4 text-center">
-                  <h4 className="text-xl font-semibold">{plan.name}</h4>
-                  <p className="text-[#ff770f] font-bold text-2xl mt-1">{plan.price}</p>
-                  {plan.description && <p className="text-gray-500 text-xs mt-1">{plan.description}</p>}
-                </div>
-                <div className="p-6">
-                  <ul className="space-y-3">
-                    <li className="flex items-center">
-                      {plan.features.calendar ? (
-                        <CheckCircle2 className="h-5 w-5 text-[#ff770f] mr-2" />
-                      ) : (
-                        <X className="h-5 w-5 text-gray-300 mr-2" />
-                      )}
-                      <span className={!plan.features.calendar ? "text-gray-400" : ""}>
-                        {t('product.pricing.feature.calendar')}
-                      </span>
-                    </li>
-                    <li className="flex items-center">
-                      {plan.features.crm ? (
-                        <CheckCircle2 className="h-5 w-5 text-[#ff770f] mr-2" />
-                      ) : (
-                        <X className="h-5 w-5 text-gray-300 mr-2" />
-                      )}
-                      <span className={!plan.features.crm ? "text-gray-400" : ""}>
-                        {t('product.pricing.feature.crm')}
-                      </span>
-                    </li>
-                    <li className="flex items-center">
-                      {plan.features.landing ? (
-                        <CheckCircle2 className="h-5 w-5 text-[#ff770f] mr-2" />
-                      ) : (
-                        <X className="h-5 w-5 text-gray-300 mr-2" />
-                      )}
-                      <span className={!plan.features.landing ? "text-gray-400" : ""}>
-                        {t('product.pricing.feature.landing')}
-                      </span>
-                    </li>
-                    <li className="flex items-center">
-                      {plan.features.branches ? (
-                        <CheckCircle2 className="h-5 w-5 text-[#ff770f] mr-2" />
-                      ) : (
-                        <X className="h-5 w-5 text-gray-300 mr-2" />
-                      )}
-                      <span className={!plan.features.branches ? "text-gray-400" : ""}>
-                        {t('product.pricing.feature.branches')}
-                      </span>
-                    </li>
-                  </ul>
-                  <div className="mt-6">
-                    <button
-                      onClick={() => scrollToSection('contact')}
-                      className={`block w-full ${
-                        plan.buttonVariant === 'outline' 
-                          ? "bg-white border-2 border-[#ff770f] text-[#ff770f] hover:bg-[#ffeeda]" 
-                          : "bg-[#ff770f] text-white hover:bg-[#ff770f]/90"
-                      } px-4 py-2 rounded-md font-medium transition-colors text-center`}
+            <div>
+              {pricingPlans.map((plan, index) => (
+                  <motion.div 
+                    className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100"
+                    whileHover={{ 
+                      y: -5, 
+                      boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)"
+                    }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <motion.div 
+                      className="bg-[#ff770f]/10 p-4 text-center"
+                      initial={{ opacity: 0, backgroundColor: "rgba(255, 119, 15, 0)" }}
+                      animate={{ opacity: 1, backgroundColor: "rgba(255, 119, 15, 0.1)" }}
+                      transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                     >
-                      {t('product.pricing.contact')}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
+                      <motion.h4 
+                        className="text-xl font-semibold"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                      >
+                        {plan.name}
+                      </motion.h4>
+                      <motion.p 
+                        className="text-[#ff770f] font-bold text-2xl mt-1"
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ 
+                          duration: 0.5, 
+                          delay: 0.4 + index * 0.1,
+                          type: "spring",
+                          stiffness: 300
+                        }}
+                      >
+                        {plan.price}
+                      </motion.p>
+                      {plan.description && (
+                        <motion.p 
+                          className="text-gray-500 text-xs mt-1"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ duration: 0.3, delay: 0.6 + index * 0.1 }}
+                        >
+                          {plan.description}
+                        </motion.p>
+                      )}
+                    </motion.div>
+                    <div className="p-6">
+                      <motion.ul 
+                        className="space-y-3"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+                      >
+                        <li className="flex items-center">
+                          {plan.features.calendar ? (
+                            <CheckCircle2 className="h-5 w-5 text-[#ff770f] mr-2" />
+                          ) : (
+                            <X className="h-5 w-5 text-gray-300 mr-2" />
+                          )}
+                          <span className={!plan.features.calendar ? "text-gray-400" : ""}>
+                            {t('product.pricing.feature.calendar')}
+                          </span>
+                        </li>
+                        <li className="flex items-center">
+                          {plan.features.crm ? (
+                            <CheckCircle2 className="h-5 w-5 text-[#ff770f] mr-2" />
+                          ) : (
+                            <X className="h-5 w-5 text-gray-300 mr-2" />
+                          )}
+                          <span className={!plan.features.crm ? "text-gray-400" : ""}>
+                            {t('product.pricing.feature.crm')}
+                          </span>
+                        </li>
+                        <li className="flex items-center">
+                          {plan.features.landing ? (
+                            <CheckCircle2 className="h-5 w-5 text-[#ff770f] mr-2" />
+                          ) : (
+                            <X className="h-5 w-5 text-gray-300 mr-2" />
+                          )}
+                          <span className={!plan.features.landing ? "text-gray-400" : ""}>
+                            {t('product.pricing.feature.landing')}
+                          </span>
+                        </li>
+                        <li className="flex items-center">
+                          {plan.features.branches ? (
+                            <CheckCircle2 className="h-5 w-5 text-[#ff770f] mr-2" />
+                          ) : (
+                            <X className="h-5 w-5 text-gray-300 mr-2" />
+                          )}
+                          <span className={!plan.features.branches ? "text-gray-400" : ""}>
+                            {t('product.pricing.feature.branches')}
+                          </span>
+                        </li>
+                      </motion.ul>
+                      <motion.div 
+                        className="mt-6"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                      >
+                        <button
+                          onClick={() => scrollToSection('contact')}
+                          className={`block w-full ${
+                            plan.buttonVariant === 'outline' 
+                              ? "bg-white border-2 border-[#ff770f] text-[#ff770f] hover:bg-[#ffeeda]" 
+                              : "bg-[#ff770f] text-white hover:bg-[#ff770f]/90"
+                          } px-4 py-2 rounded-md font-medium transition-colors text-center`}
+                        >
+                          {t('product.pricing.contact')}
+                        </button>
+                      </motion.div>
+                    </div>
+                  </motion.div>
+              ))}
+            </div>
           </div>
           
           {/* Add-ons Section */}
