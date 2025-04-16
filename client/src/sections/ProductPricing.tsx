@@ -276,7 +276,7 @@ const ProductPricing = () => {
             <div className="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-xl mx-auto">
               <iframe 
                 className="w-full h-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                src="https://www.youtube.com/embed/ORvJSONNFDE" 
                 title="Te Ayudo - Cómo funciona" 
                 frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

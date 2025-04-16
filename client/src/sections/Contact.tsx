@@ -57,7 +57,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium">{t('contact.info.phone')}</h4>
-                    <p className="text-gray-600">+591 78104295</p>
+                    <p className="text-gray-600">+591 78048223</p>
                   </div>
                 </div>
                 
@@ -67,7 +67,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium">{t('contact.info.email')}</h4>
-                    <p className="text-gray-600">info@teayudo.com.bo</p>
+                    <p className="text-gray-600">contacto@teayudo.com.bo</p>
                   </div>
                 </div>
                 
@@ -77,14 +77,14 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium">{t('contact.info.address')}</h4>
-                    <p className="text-gray-600">La Paz, Bolivia</p>
+                    <p className="text-gray-600">Santa Cruz, Bolivia</p>
                   </div>
                 </div>
               </div>
               
               <div className="mt-8">
                 <a 
-                  href="https://wa.me/59178104295" 
+                  href="https://wa.me/59178048223" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center bg-green-500 text-white px-6 py-3 rounded-md font-medium hover:bg-green-600 transition-colors"
