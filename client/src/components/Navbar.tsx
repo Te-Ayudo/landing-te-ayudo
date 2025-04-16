@@ -64,11 +64,11 @@ const Navbar = () => {
 
   return (
     <header className={`fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-50 ${isScrolled ? 'shadow-sm' : ''}`}>
-      <div className="container mx-auto px-4 py-4 max-w-7xl">
+      <div className="container mx-auto px-4 py-5 max-w-7xl">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src={teAyudoLogo} alt="Te Ayudo Logo" className="h-12" />
+            <img src={teAyudoLogo} alt="Te Ayudo Logo" className="h-16" />
           </Link>
           
           {/* Desktop Navigation */}
