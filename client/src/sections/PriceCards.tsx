@@ -8,7 +8,8 @@ import {
 } from "lucide-react";
 import { scrollToSection } from "@/lib/utils";
 import { useLanguage } from "@/context/LanguageContext";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 // Definición de los planes de precios
 const pricingPlans = [
@@ -71,13 +72,26 @@ const pricingPlans = [
 const PriceCards = () => {
   const { t } = useLanguage();
   
+  // Referencias para detectar cuando elementos entran en viewport
+  const titleRef = useRef(null);
+  const tableRef = useRef(null);
+  const mobileCardsRef = useRef(null);
+  const addonsRef = useRef(null);
+
+  // Detectar si los elementos están en la vista
+  const titleInView = useInView(titleRef, { once: true, amount: 0.3 });
+  const tableInView = useInView(tableRef, { once: true, amount: 0.1 });
+  const mobileCardsInView = useInView(mobileCardsRef, { once: true, amount: 0.1 });
+  const addonsInView = useInView(addonsRef, { once: true, amount: 0.2 });
+  
   return (
     <section id="pricing" className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <motion.div 
+          ref={titleRef}
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl font-bold mb-4">{t('product.title') || 'Nuestros Productos'}</h2>
@@ -92,9 +106,10 @@ const PriceCards = () => {
           {/* Desktop Pricing Table */}
           <div className="hidden md:block overflow-x-auto">
             <motion.div 
+              ref={tableRef}
               className="min-w-full shadow-lg rounded-xl overflow-hidden"
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={tableInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.7 }}
             >
               <table className="min-w-full bg-white">
@@ -252,13 +267,13 @@ const PriceCards = () => {
           </div>
           
           {/* Mobile Pricing Cards */}
-          <div className="md:hidden space-y-6">
+          <div ref={mobileCardsRef} className="md:hidden space-y-6">
             {pricingPlans.map((plan, index) => (
               <motion.div 
                 key={`plan-mobile-${plan.name}`}
                 className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 mb-6"
                 initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
+                animate={mobileCardsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                 whileHover={{ 
                   y: -5, 
@@ -348,9 +363,10 @@ const PriceCards = () => {
           
           {/* Add-ons Section */}
           <motion.div 
+            ref={addonsRef}
             className="mt-12"
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={addonsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             <h4 className="text-xl font-semibold mb-4 text-center">{t('product.addons.title') || 'Extras'}</h4>
@@ -358,7 +374,7 @@ const PriceCards = () => {
               <motion.div 
                 className="bg-white rounded-lg shadow-sm p-6 border border-gray-100"
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                animate={addonsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
                 whileHover={{ 
                   y: -5, 
@@ -368,7 +384,7 @@ const PriceCards = () => {
                 <div className="flex items-center mb-3">
                   <motion.div
                     initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
+                    animate={addonsInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
                   >
                     <MessageSquare className="h-6 w-6 text-green-500 mr-2" />
@@ -383,7 +399,7 @@ const PriceCards = () => {
               <motion.div 
                 className="bg-white rounded-lg shadow-sm p-6 border border-gray-100"
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                animate={addonsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
                 whileHover={{ 
                   y: -5, 
@@ -393,7 +409,7 @@ const PriceCards = () => {
                 <div className="flex items-center mb-3">
                   <motion.div
                     initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
+                    animate={addonsInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
                   >
                     <Lightbulb className="h-6 w-6 text-blue-500 mr-2" />
@@ -408,7 +424,7 @@ const PriceCards = () => {
               <motion.div 
                 className="bg-white rounded-lg shadow-sm p-6 border border-gray-100"
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                animate={addonsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, delay: 0.7 }}
                 whileHover={{ 
                   y: -5, 
