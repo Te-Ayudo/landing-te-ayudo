@@ -52,15 +52,6 @@ const Roadmap = () => {
         t('roadmap.2027.milestone1'),
         t('roadmap.2027.milestone2')
       ]
-    },
-    {
-      year: "2028",
-      title: t('roadmap.2028'),
-      color: "primary",
-      milestones: [
-        t('roadmap.2028.milestone1'),
-        t('roadmap.2028.milestone2')
-      ]
     }
   ];
 

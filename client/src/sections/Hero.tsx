@@ -168,7 +168,7 @@ const Hero = () => {
                     </div>
                     <div>
                       <p className="text-xs text-gray-500">{t('hero.stats.users')}</p>
-                      <p className="text-lg font-bold text-gray-800">120,000+</p>
+                      <p className="text-lg font-bold text-gray-800">6,000+</p>
                     </div>
                   </div>
                 </GlassCard>
