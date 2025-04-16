@@ -101,7 +101,7 @@ const PriceCards = () => {
                 <thead>
                   <tr className="bg-gray-50">
                     <th className="py-4 px-6 text-left font-semibold text-gray-700 border-b">
-                      {t('product.pricing.features') || 'Características'}
+                      Características
                     </th>
                     {pricingPlans.map((plan, index) => (
                       <motion.th 
