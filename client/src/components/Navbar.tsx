@@ -89,50 +89,7 @@ const Navbar = () => {
               {t('nav.contact')}
             </button>
             
-            {/* Language selector */}
-            <div id="language-menu-container" className="relative inline-block text-left">
-              <button
-                type="button"
-                onClick={toggleLanguageMenu}
-                className="flex items-center text-gray-700 hover:text-[#ff770f] font-medium py-2 transition-colors"
-                aria-expanded="true"
-                aria-haspopup="true"
-              >
-                <Globe className="h-5 w-5 mr-1" />
-                <span>{language.toUpperCase()}</span>
-              </button>
-
-              {showLanguageMenu && (
-                <div
-                  className="absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                  role="menu"
-                  aria-orientation="vertical"
-                  aria-labelledby="menu-button"
-                  tabIndex={-1}
-                >
-                  <div className="py-1" role="none">
-                    <button
-                      onClick={() => changeLanguage('es')}
-                      className={`w-full text-left block px-4 py-2 text-sm ${
-                        language === 'es' ? 'bg-gray-100 text-[#ff770f]' : 'text-gray-700 hover:bg-gray-50'
-                      }`}
-                      role="menuitem"
-                    >
-                      {t('nav.language.es')}
-                    </button>
-                    <button
-                      onClick={() => changeLanguage('en')}
-                      className={`w-full text-left block px-4 py-2 text-sm ${
-                        language === 'en' ? 'bg-gray-100 text-[#ff770f]' : 'text-gray-700 hover:bg-gray-50'
-                      }`}
-                      role="menuitem"
-                    >
-                      {t('nav.language.en')}
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
+            {/* Language selector removed as requested */}
             
             <a href="https://app.teayudo.com.bo/#/login" target="_blank" rel="noopener noreferrer" className="bg-[#ff770f] text-white px-4 py-2 rounded-md font-medium hover:bg-[#ff770f]/90 transition-colors">
               {t('common.affiliate')}
@@ -188,25 +145,7 @@ const Navbar = () => {
             {t('nav.contact')}
           </button>
           
-          {/* Language selector for mobile */}
-          <div className="flex items-center py-2">
-            <Globe className="h-5 w-5 mr-2 text-gray-700" />
-            <div className="flex space-x-4">
-              <button 
-                onClick={() => changeLanguage('es')} 
-                className={`text-sm font-medium ${language === 'es' ? 'text-[#ff770f]' : 'text-gray-700'}`}
-              >
-                ESP
-              </button>
-              <span className="text-gray-400">|</span>
-              <button 
-                onClick={() => changeLanguage('en')} 
-                className={`text-sm font-medium ${language === 'en' ? 'text-[#ff770f]' : 'text-gray-700'}`}
-              >
-                ENG
-              </button>
-            </div>
-          </div>
+          {/* Language selector for mobile removed as requested */}
           
           <a
             href="https://app.teayudo.com.bo/#/login"

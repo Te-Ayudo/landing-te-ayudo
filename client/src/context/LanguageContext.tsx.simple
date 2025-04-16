@@ -1,0 +1,66 @@
+import React, { createContext, useContext } from 'react';
+
+// Definición de tipo
+export type Language = 'es' | 'en';
+
+// Traducciones simplificadas
+const translations = {
+  es: {
+    // Solo español como único idioma para simplificar
+    'nav.mission': 'Misión y Visión',
+    'nav.roadmap': 'Nuestra Ruta',
+    'nav.product': 'Productos',
+    'nav.partners': 'Socios',
+    'nav.contact': 'Contacto',
+    'common.affiliate': 'Afiliados',
+    'footer.description': 'La plataforma SaaS ERP definitiva para empresas de servicios en LATAM.',
+    'footer.links.title': 'Enlaces',
+    'footer.links.mission': 'Misión & Visión',
+    'footer.links.roadmap': 'Roadmap',
+    'footer.links.product': 'Producto & Precios',
+    'footer.links.contact': 'Contacto',
+    'footer.contact.title': 'Contacto',
+    'footer.social.title': 'Síguenos',
+    'footer.copyright': 'Todos los derechos reservados.',
+    'footer.legal.terms': 'Términos y Condiciones',
+    'footer.legal.privacy': 'Política de Privacidad',
+  }
+};
+
+// Crear un tipo de contexto simplificado
+interface LanguageContextType {
+  language: Language;
+  t: (key: string) => string;
+}
+
+// Configuración por defecto
+const defaultLanguage: Language = 'es';
+
+// Crear el contexto con valores por defecto
+const LanguageContext = createContext<LanguageContextType>({
+  language: defaultLanguage,
+  t: (key: string) => {
+    // Siempre devuelve la traducción en español o la clave misma si no existe
+    return translations.es[key] || key;
+  }
+});
+
+// Componente proveedor
+export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  // Valores fijos para simplificar
+  const value = {
+    language: defaultLanguage,
+    t: (key: string) => translations.es[key] || key
+  };
+
+  return (
+    <LanguageContext.Provider value={value}>
+      {children}
+    </LanguageContext.Provider>
+  );
+};
+
+// Hook para usar el idioma
+export const useLanguage = () => {
+  return useContext(LanguageContext);
+};
