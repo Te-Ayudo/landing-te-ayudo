@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import { 
   Phone, 
   Mail, 
-  Twitter, 
   Facebook, 
   Instagram, 
   Linkedin 
 } from "lucide-react";
+import { FaTiktok } from "react-icons/fa";
 import { scrollToSection } from "@/lib/utils";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -71,11 +71,11 @@ const Footer = () => {
             <ul className="space-y-2">
               <li className="flex items-center">
                 <Phone className="h-5 w-5 text-gray-400 mr-2" />
-                <span className="text-gray-400">+591 78104295</span>
+                <span className="text-gray-400">+591 78048223</span>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 text-gray-400 mr-2" />
-                <span className="text-gray-400">info@teayudo.com.bo</span>
+                <span className="text-gray-400">contacto@teayudo.com.bo</span>
               </li>
             </ul>
           </div>
@@ -83,16 +83,16 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">{t('footer.social.title')}</h4>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Twitter className="h-6 w-6" />
+              <a href="https://www.tiktok.com/@teayudobolivia" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <FaTiktok style={{ height: '1.5rem', width: '1.5rem' }} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.facebook.com/teayudo.bo" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Facebook className="h-6 w-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.instagram.com/teayudo.bo/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Instagram className="h-6 w-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.linkedin.com/company/te-ayudo-bolivia/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Linkedin className="h-6 w-6" />
               </a>
             </div>
