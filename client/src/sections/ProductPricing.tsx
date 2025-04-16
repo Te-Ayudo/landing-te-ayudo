@@ -36,7 +36,7 @@ const pricingPlans = [
   },
   {
     name: "Standard",
-    price: "$49",
+    price: "$499/año",
     features: {
       calendar: true,
       crm: true,
@@ -49,7 +49,8 @@ const pricingPlans = [
   },
   {
     name: "Franchise",
-    price: "$99",
+    price: "Contactar",
+    description: "Requiere reunión previa",
     features: {
       calendar: true,
       crm: true,
@@ -62,7 +63,8 @@ const pricingPlans = [
   },
   {
     name: "Enterprise",
-    price: "$199",
+    price: "Contactar",
+    description: "Requiere reunión previa",
     features: {
       calendar: true,
       crm: true,
@@ -306,6 +308,7 @@ const ProductPricing = () => {
                       <th key={plan.name} className="py-4 px-6 text-center font-semibold text-gray-700 border-b">
                         <span className="block text-lg">{plan.name}</span>
                         <span className="text-[#ff770f] font-bold text-xl mt-1 block">{plan.price}</span>
+                        {plan.description && <span className="text-gray-500 text-xs block">{plan.description}</span>}
                       </th>
                     ))}
                   </tr>
@@ -425,6 +428,7 @@ const ProductPricing = () => {
                 <div className="bg-[#ff770f]/10 p-4 text-center">
                   <h4 className="text-xl font-semibold">{plan.name}</h4>
                   <p className="text-[#ff770f] font-bold text-2xl mt-1">{plan.price}</p>
+                  {plan.description && <p className="text-gray-500 text-xs mt-1">{plan.description}</p>}
                 </div>
                 <div className="p-6">
                   <ul className="space-y-3">
