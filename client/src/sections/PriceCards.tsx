@@ -434,7 +434,7 @@ const PriceCards = () => {
                 <div className="flex items-center mb-3">
                   <motion.div
                     initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
+                    animate={addonsInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
                     transition={{ duration: 0.5, delay: 0.8 }}
                   >
                     <ClipboardList className="h-6 w-6 text-purple-500 mr-2" />
