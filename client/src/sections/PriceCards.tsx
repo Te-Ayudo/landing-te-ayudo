@@ -369,7 +369,7 @@ const PriceCards = () => {
             animate={addonsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <h4 className="text-xl font-semibold mb-4 text-center">{t('product.addons.title')}</h4>
+            <h4 className="text-xl font-semibold mb-4 text-center">Extras</h4>
             <div className="grid md:grid-cols-3 gap-6">
               <motion.div 
                 className="bg-white rounded-lg shadow-sm p-6 border border-gray-100"
@@ -389,10 +389,10 @@ const PriceCards = () => {
                   >
                     <MessageSquare className="h-6 w-6 text-green-500 mr-2" />
                   </motion.div>
-                  <h5 className="font-medium">{t('product.addons.whatsapp.title')}</h5>
+                  <h5 className="font-medium">WhatsApp Ilimitado</h5>
                 </div>
                 <p className="text-sm text-gray-600">
-                  {t('product.addons.whatsapp.description')}
+                  Envía mensajes ilimitados a tus clientes desde la plataforma.
                 </p>
               </motion.div>
               
@@ -414,10 +414,10 @@ const PriceCards = () => {
                   >
                     <Lightbulb className="h-6 w-6 text-blue-500 mr-2" />
                   </motion.div>
-                  <h5 className="font-medium">{t('product.addons.ai.title')}</h5>
+                  <h5 className="font-medium">IA en WhatsApp</h5>
                 </div>
                 <p className="text-sm text-gray-600">
-                  {t('product.addons.ai.description')}
+                  Asistente virtual con IA para responder consultas de tus clientes.
                 </p>
               </motion.div>
               
@@ -439,10 +439,10 @@ const PriceCards = () => {
                   >
                     <ClipboardList className="h-6 w-6 text-purple-500 mr-2" />
                   </motion.div>
-                  <h5 className="font-medium">{t('product.addons.billing.title')}</h5>
+                  <h5 className="font-medium">Sistema de Facturación</h5>
                 </div>
                 <p className="text-sm text-gray-600">
-                  {t('product.addons.billing.description')}
+                  Genera facturas electrónicas y gestiona impuestos automáticamente.
                 </p>
               </motion.div>
             </div>
