@@ -13,7 +13,7 @@ interface TimelineItem {
 
 const Roadmap = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   
   // Timeline data con traducciones
   const timelineItems: TimelineItem[] = [

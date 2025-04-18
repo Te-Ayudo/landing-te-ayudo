@@ -1,4 +1,4 @@
-import { Zap, Globe, Users, CheckCircle2, Shield, Lightbulb } from "lucide-react";
+import { Zap, Globe, Users, Shield, Lightbulb } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 const MissionVision = () => {
