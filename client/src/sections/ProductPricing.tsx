@@ -275,7 +275,7 @@ const ProductPricing = () => {
         <div className="mb-16">
           <h3 className="text-2xl font-semibold mb-6 text-center">{t('product.video.title')}</h3>
           <div className="bg-gradient-to-r from-[#ff770f]/10 to-[#5ccdcc]/10 p-6 rounded-xl">
-            <div className="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-xl mx-auto">
+            <div className="aspect-video rounded-xl overflow-hidden shadow-xl mx-auto">
               <iframe 
                 className="w-full h-full"
                 src="https://www.youtube.com/embed/ORvJSONNFDE" 
