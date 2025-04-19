@@ -41,186 +41,178 @@ const partnerLogos = [
   {
     name: "Clean House",
     logo: "https://img.icons8.com/fluency/96/000000/vacuum-cleaner.png",
-    industry: "Hogar"
+    industry: "Hogar",
   },
   {
     name: "Plomeros Express",
     logo: "https://img.icons8.com/fluency/96/000000/plumbing.png",
-    industry: "Hogar"
+    industry: "Hogar",
   },
   {
     name: "Electricistas 24/7",
     logo: "https://img.icons8.com/fluency/96/000000/electrical.png",
-    industry: "Hogar"
+    industry: "Hogar",
   },
   {
     name: "Jardinería Verde",
     logo: "https://img.icons8.com/fluency/96/000000/garden-shears.png",
-    industry: "Hogar"
+    industry: "Hogar",
   },
   {
     name: "Pintores Pro",
-    logo: "https://img.icons8.com/fluency/96/000000/paint-roller.png",
-    industry: "Hogar"
+    logo: "https://img.icons8.com/?size=100&id=80659&format=png&color=000000",
+    industry: "Hogar",
   },
   {
     name: "Carpinteros Premium",
     logo: "https://img.icons8.com/fluency/96/000000/saw.png",
-    industry: "Hogar"
+    industry: "Hogar",
   },
   {
     name: "Aire Fresco",
     logo: "https://img.icons8.com/fluency/96/000000/air-conditioner.png",
-    industry: "Hogar"
+    industry: "Hogar",
   },
   {
     name: "Decoración Interior",
     logo: "https://img.icons8.com/fluency/96/000000/interior-design.png",
-    industry: "Hogar"
+    industry: "Hogar",
   },
-  
+
   // Vehículos
   {
     name: "Mecánica Rápida",
-    logo: "https://img.icons8.com/fluency/96/000000/car-service.png", 
-    industry: "Vehículos"
+    logo: "https://img.icons8.com/fluency/96/000000/car-service.png",
+    industry: "Vehículos",
   },
   {
     name: "Lavado Express",
-    logo: "https://img.icons8.com/fluency/96/000000/car-wash.png", 
-    industry: "Vehículos"
+    logo: "https://img.icons8.com/?size=100&id=EYA82y5pMatG&format=png&color=000000",
+    industry: "Vehículos",
   },
   {
     name: "Grúas 24 Horas",
-    logo: "https://img.icons8.com/fluency/96/000000/tow-truck.png", 
-    industry: "Vehículos"
+    logo: "https://img.icons8.com/fluency/96/000000/tow-truck.png",
+    industry: "Vehículos",
   },
   {
     name: "Neumáticos Seguros",
-    logo: "https://img.icons8.com/fluency/96/000000/tire.png", 
-    industry: "Vehículos"
+    logo: "https://img.icons8.com/fluency/96/000000/tire.png",
+    industry: "Vehículos",
   },
   {
     name: "Pintura Automotriz",
-    logo: "https://img.icons8.com/fluency/96/000000/spray-paint.png", 
-    industry: "Vehículos"
+    logo: "https://img.icons8.com/?size=100&id=itWx3RMDpMck&format=png&color=000000",
+    industry: "Vehículos",
   },
   {
     name: "Electricidad Automotriz",
-    logo: "https://img.icons8.com/fluency/96/000000/car-battery.png", 
-    industry: "Vehículos"
+    logo: "https://img.icons8.com/fluency/96/000000/car-battery.png",
+    industry: "Vehículos",
   },
   {
     name: "Motor Tech",
-    logo: "https://img.icons8.com/fluency/96/000000/engine.png", 
-    industry: "Vehículos"
+    logo: "https://img.icons8.com/fluency/96/000000/engine.png",
+    industry: "Vehículos",
   },
   {
     name: "Vidrios y Polarizados",
-    logo: "https://img.icons8.com/fluency/96/000000/windshield.png", 
-    industry: "Vehículos"
+    logo: "https://img.icons8.com/?size=100&id=aHm1PkoQsKZ1&format=png&color=000000",
+    industry: "Vehículos",
   },
-  
+
   // Salud
   {
     name: "Médicos a Domicilio",
-    logo: "https://img.icons8.com/fluency/96/000000/doctor-male.png",
-    industry: "Salud"
+    logo: "https://img.icons8.com/?size=100&id=InPEs3rVsarN&format=png&color=000000",
+    industry: "Salud",
   },
   {
     name: "Fisioterapia Pro",
-    logo: "https://img.icons8.com/fluency/96/000000/physical-therapy.png",
-    industry: "Salud"
+    logo: "https://img.icons8.com/?size=100&id=ZDRcjZ1b2Oh4&format=png&color=000000",
+    industry: "Salud",
   },
   {
     name: "Nutrición Esencial",
     logo: "https://img.icons8.com/fluency/96/000000/healthy-food.png",
-    industry: "Salud"
+    industry: "Salud",
   },
   {
     name: "Enfermería 24/7",
     logo: "https://img.icons8.com/fluency/96/000000/nurse-female.png",
-    industry: "Salud"
+    industry: "Salud",
   },
   {
     name: "Ambulancias Rápidas",
     logo: "https://img.icons8.com/fluency/96/000000/ambulance.png",
-    industry: "Salud"
+    industry: "Salud",
   },
   {
     name: "Laboratorio Móvil",
     logo: "https://img.icons8.com/fluency/96/000000/test-tube.png",
-    industry: "Salud"
+    industry: "Salud",
   },
   {
     name: "Odontología Express",
     logo: "https://img.icons8.com/fluency/96/000000/tooth.png",
-    industry: "Salud"
+    industry: "Salud",
   },
   {
     name: "Psicología Online",
-    logo: "https://img.icons8.com/fluency/96/000000/mental-health.png",
-    industry: "Salud"
+    logo: "https://img.icons8.com/?size=100&id=A9xkemo6m4mh&format=png&color=000000",
+    industry: "Salud",
   },
-  
+
   // Belleza
   {
     name: "Estilistas Premium",
-    logo: "https://img.icons8.com/fluency/96/000000/scissors.png",
-    industry: "Belleza"
+    logo: "https://img.icons8.com/?size=100&id=169tUYWIGyZq&format=png&color=000000",
+    industry: "Belleza",
   },
   {
     name: "Maquillaje Profesional",
     logo: "https://img.icons8.com/fluency/96/000000/makeup.png",
-    industry: "Belleza"
+    industry: "Belleza",
   },
   {
     name: "Uñas Perfectas",
     logo: "https://img.icons8.com/fluency/96/000000/nail-polish.png",
-    industry: "Belleza"
+    industry: "Belleza",
   },
   {
     name: "Masajes Relajantes",
-    logo: "https://img.icons8.com/fluency/96/000000/massage.png",
-    industry: "Belleza"
+    logo: "https://img.icons8.com/?size=100&id=YThESrJ327MQ&format=png&color=000000",
+    industry: "Belleza",
   },
   {
     name: "Belleza Móvil",
     logo: "https://img.icons8.com/fluency/96/000000/barbershop.png",
-    industry: "Belleza"
+    industry: "Belleza",
   },
   {
     name: "SPA Express",
     logo: "https://img.icons8.com/fluency/96/000000/spa-flower.png",
-    industry: "Belleza"
+    industry: "Belleza",
   },
   {
     name: "Pestañas y Cejas",
     logo: "https://img.icons8.com/fluency/96/000000/eyelash.png",
-    industry: "Belleza"
+    industry: "Belleza",
   },
   {
     name: "Tratamientos Faciales",
-    logo: "https://img.icons8.com/fluency/96/000000/face-mask.png",
-    industry: "Belleza"
-  }
+    logo: "https://img.icons8.com/?size=100&id=fzOl5QWClnNw&format=png&color=000000",
+    industry: "Belleza",
+  },
 ];
 
 // Industries with colors for filtering
-const industriesEs = [
+const industries = [
   { name: "Todos", color: "#ff770f" },
   { name: "Hogar", color: "#5ccdcc" },
   { name: "Vehículos", color: "#ff770f" },
   { name: "Salud", color: "#5ccdcc" },
   { name: "Belleza", color: "#ff770f" }
-];
-
-const industriesEn = [
-  { name: "All", color: "#ff770f" },
-  { name: "Home", color: "#5ccdcc" },
-  { name: "Vehicles", color: "#ff770f" },
-  { name: "Health", color: "#5ccdcc" },
-  { name: "Beauty", color: "#ff770f" }
 ];
 
 const Partners = () => {
@@ -236,7 +228,13 @@ const Partners = () => {
   const filtersRef = useRef<HTMLDivElement>(null);
   
   // Use the correct industries based on language
-  const industries = language === 'es' ? industriesEs : industriesEn;
+  // const industries = language === 'es' ? industriesEs : industriesEn;
+
+  // useEffect(() => {
+  //   const newDefault = language === "es" ? "Todos" : "All";
+  //   setActiveIndustry(newDefault);
+  // }, [language]);
+
   
   // Animate the company count
   useEffect(() => {
@@ -264,7 +262,8 @@ const Partners = () => {
             'Home': 'Hogar',
             'Vehicles': 'Vehículos',
             'Health': 'Salud',
-            'Beauty': 'Belleza'
+            'Beauty': 'Belleza',
+            'All': 'Todos'
           };
           return logo.industry === industryMap[activeIndustry as keyof typeof industryMap];
         }
