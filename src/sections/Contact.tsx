@@ -22,7 +22,7 @@ const Contact = () => {
   const sendMessage = async (values: any) => {
     const response = await fetch('https://whatsapp.desarrollamelo.com/api/send', {
       method: 'POST',
-      mode: 'no-cors',
+      // mode: 'no-cors', // only for testing
       headers: {
         'Content-Type': 'application/json',
       },
