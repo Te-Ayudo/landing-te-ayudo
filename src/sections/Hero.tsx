@@ -52,7 +52,7 @@ const Hero = () => {
                 />
               </span>
               <br />
-              <span className="bg-gradient-to-r from-teayudo-orange to-teayudo-orange/80 bg-clip-text text-transparent inline-block mt-2">
+              <span className="bg-gradient-to-r from-teayudo-orange to-teayudo-orange/80 bg-clip-text text-transparent inline-block mt-4">
                 <motion.span
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
