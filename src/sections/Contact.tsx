@@ -22,7 +22,7 @@ const Contact = () => {
   const sendMessage = async (values: any) => {
     const response = await fetch('https://whatsapp.desarrollamelo.com/api/send', {
       method: 'POST',
-      // mode: 'no-cors', // only for testing
+      mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -33,7 +33,7 @@ const Contact = () => {
 Email: ${values.email}
 Empresa: ${values.company}
 Mensaje: ${values.message}
-Enviado desde la página web de Te Ayudo.`,
+✅ Enviado desde la página web de Te Ayudo.`,
         instance_id: "66EB301CCC6F3",
         access_token: "66eb2e9a42596"
       })
