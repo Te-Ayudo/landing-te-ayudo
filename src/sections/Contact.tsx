@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
   const { t } = useLanguage();
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,14 +22,14 @@ const Contact = () => {
   };
 
   const sendMessage = async (values: any) => {
-    const response = await fetch('https://whatsapp.desarrollamelo.com/api/send', {
-      method: 'POST',
-      mode: 'no-cors',
+    const response = await fetch("https://whatsapp.desarrollamelo.com/api/send", {
+      method: "POST",
+      mode: "no-cors",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        number: "59162175391",
+        number: "59178079566",
         type: "text",
         message: `Nombre: ${values.name}
 Email: ${values.email}
@@ -35,14 +37,22 @@ Empresa: ${values.company}
 Mensaje: ${values.message}
 ✅ Enviado desde la página web de Te Ayudo.`,
         instance_id: "66EB301CCC6F3",
-        access_token: "66eb2e9a42596"
-      })
-    })
+        access_token: "66eb2e9a42596",
+      }),
+    });
     const data = await response.json();
     if (data.status === "success") {
-      alert(t('contact.form.success'));
+      toast({
+        title: "¡Mensaje enviado!",
+        description: "Gracias por contactarnos. Te responderemos pronto.",
+        variant: "default",
+      });
     } else {
-      alert(t('contact.form.error'));
+      toast({
+        title: "Error",
+        description: "Hubo un problema al enviar tu mensaje. Intenta nuevamente.",
+        variant: "destructive",
+      });
     }
   }
 
@@ -61,8 +71,12 @@ Mensaje: ${values.message}
     // Send message to WhatsApp API
     sendMessage(formData);
 
-    // Show a success message (in a real implementation)
-    alert(t('contact.form.success'));
+    toast({
+      title: "¡Mensaje enviado!",
+      description: "Gracias por contactarnos. Te responderemos pronto.",
+      variant: "default",
+    });
+
   };
 
   return (
@@ -132,63 +146,69 @@ Mensaje: ${values.message}
           <div>
             <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-md overflow-hidden p-8">
               <h3 className="text-xl font-semibold mb-6">{t('contact.form.title')}</h3>
-
+              
               <div className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">{t('contact.form.name')}</label>
-                  <input
-                    type="text"
+                  <input 
+                    type="text" 
                     id="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#ff770f] focus:border-[#ff770f]"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#ff770f] focus:border-[#ff770f]" 
                     placeholder={t('contact.form.name.placeholder')}
                     required
+                    onInvalid={(e) => e.currentTarget.setCustomValidity(t('contact.form.name.error'))}
+                    onInput={(e) => e.currentTarget.setCustomValidity('')}
                   />
                 </div>
-
+                
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">{t('contact.form.email')}</label>
-                  <input
-                    type="email"
+                  <input 
+                    type="email" 
                     id="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#ff770f] focus:border-[#ff770f]"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#ff770f] focus:border-[#ff770f]" 
                     placeholder={t('contact.form.email.placeholder')}
                     required
+                    onInvalid={(e) => e.currentTarget.setCustomValidity(t('contact.form.email.error'))}
+                    onInput={(e) => e.currentTarget.setCustomValidity('')}
                   />
                 </div>
-
+                
                 <div>
                   <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">{t('contact.form.company')}</label>
-                  <input
-                    type="text"
+                  <input 
+                    type="text" 
                     id="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#ff770f] focus:border-[#ff770f]"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#ff770f] focus:border-[#ff770f]" 
                     placeholder={t('contact.form.company.placeholder')}
                   />
                 </div>
-
+                
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">{t('contact.form.message')}</label>
-                  <textarea
+                  <textarea 
                     id="message"
                     value={formData.message}
                     onChange={handleChange}
-                    rows={4}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#ff770f] focus:border-[#ff770f]"
+                    rows={4} 
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#ff770f] focus:border-[#ff770f]" 
                     placeholder={t('contact.form.message.placeholder')}
                     required
+                    onInvalid={(e) => e.currentTarget.setCustomValidity(t('contact.form.message.error'))}
+                    onInput={(e) => e.currentTarget.setCustomValidity('')}
                   ></textarea>
                 </div>
               </div>
-
+              
               <div className="mt-6">
-                <button
-                  type="submit"
+                <button 
+                  type="submit" 
                   className="w-full bg-[#ff770f] text-white px-6 py-3 rounded-md font-medium hover:bg-[#ff770f]/90 transition-colors"
                 >
                   {t('contact.form.submit')}
